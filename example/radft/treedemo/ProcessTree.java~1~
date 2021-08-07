@@ -1,0 +1,129 @@
+package treedemo;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+import javax.swing.*;
+import javax.swing.tree.*;
+
+public class ProcessTree extends JApplet {
+
+  boolean isStandalone = false;
+  JScrollPane jScrollPane1 = new JScrollPane();
+  JTree jTree1 = new JTree();
+  JPanel jpButtons = new JPanel();
+  JButton jbtAdd = new JButton();
+  JButton jbtRemove = new JButton();
+
+  // Get selection model
+  TreeSelectionModel selectionModel = jTree1.getSelectionModel();
+
+  // Get tree model
+  DefaultTreeModel treeModel = (DefaultTreeModel)jTree1.getModel();
+
+  /**Initialize the applet*/
+  public void init() {
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**Component initialization*/
+  private void jbInit() throws Exception {
+    this.setSize(new Dimension(400,300));
+    jbtAdd.setText("Insert a Child Node");
+    jbtAdd.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtAdd_actionPerformed(e);
+      }
+    });
+    jbtRemove.setText("Remove the Selected Node");
+    jbtRemove.addActionListener(
+      new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtRemove_actionPerformed(e);
+      }
+    });
+    this.getContentPane().add(jScrollPane1, BorderLayout.CENTER);
+    this.getContentPane().add(jpButtons, BorderLayout.NORTH);
+    jpButtons.add(jbtAdd, null);
+    jpButtons.add(jbtRemove, null);
+    jScrollPane1.getViewport().add(jTree1, null);
+
+    // Set single selection
+    selectionModel.setSelectionMode(
+      TreeSelectionModel.SINGLE_TREE_SELECTION);
+  }
+
+  void jbtAdd_actionPerformed(ActionEvent e) {
+    // Get the selection path
+    TreePath path = selectionModel.getLeadSelectionPath();
+
+    // Get the last node in the path
+    DefaultMutableTreeNode treeNode =
+      (DefaultMutableTreeNode)path.getLastPathComponent();
+
+    // Enter a new node
+    String nodeName = JOptionPane.showInputDialog(
+      this, "Enter a name for this new node", "Add a Child",
+      JOptionPane.QUESTION_MESSAGE);
+
+    // Insert the new node as a child of treeNode
+    treeModel.insertNodeInto(new DefaultMutableTreeNode(nodeName),
+      treeNode, treeNode.getChildCount());
+  }
+
+  void jbtRemove_actionPerformed(ActionEvent e) {
+    // Get the selection path
+    TreePath path = selectionModel.getLeadSelectionPath();
+
+    // Get the last node in the path
+    DefaultMutableTreeNode treeNode =
+      (DefaultMutableTreeNode)path.getLastPathComponent();
+
+    if (treeNode == treeModel.getRoot()) {
+      JOptionPane.showMessageDialog(this, "Cannot remove the root");
+    }
+    else
+      // Remove the selected node
+      treeModel.removeNodeFromParent(treeNode);
+  }
+
+  /**Get Applet information*/
+  public String getAppletInfo() {
+    return "Applet Information";
+  }
+  /**Get parameter info*/
+  public String[][] getParameterInfo() {
+    return null;
+  }
+  /**Main method*/
+  public static void main(String[] args) {
+    ProcessTree applet = new ProcessTree();
+    applet.isStandalone = true;
+    JFrame frame = new JFrame();
+    //EXIT_ON_CLOSE == 3
+    frame.setDefaultCloseOperation(3);
+    frame.setTitle("ProcessTree");
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(400,320);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / 2, (d.height - frame.getSize().height) / 2);
+    frame.setVisible(true);
+  }
+
+  //static initializer for setting look & feel
+  static {
+    try {
+      //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      //UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+    }
+    catch(Exception e) {
+    }
+  }
+}

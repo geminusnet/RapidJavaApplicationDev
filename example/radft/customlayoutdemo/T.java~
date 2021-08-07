@@ -1,0 +1,48 @@
+/*
+ * T.java
+ *
+ * Created on September 6, 2001, 9:07 PM
+ */
+
+package customlayoutdemo;
+
+import java.beans.*;
+
+/**
+ *
+ * @author  administrator
+ * @version 
+ */
+public class T extends Object implements java.io.Serializable {
+
+    private static final String PROP_SAMPLE_PROPERTY = "SampleProperty";
+
+    private String sampleProperty;
+
+    private PropertyChangeSupport propertySupport;
+
+    /** Creates new T */
+    public T() {
+        propertySupport = new PropertyChangeSupport ( this );
+    }
+
+    public String getSampleProperty () {
+        return sampleProperty;
+    }
+
+    public void setSampleProperty (String value) {
+        String oldValue = sampleProperty;
+        sampleProperty = value;
+        propertySupport.firePropertyChange (PROP_SAMPLE_PROPERTY, oldValue, sampleProperty);
+    }
+
+
+    public void addPropertyChangeListener (PropertyChangeListener listener) {
+        propertySupport.addPropertyChangeListener (listener);
+    }
+
+    public void removePropertyChangeListener (PropertyChangeListener listener) {
+        propertySupport.removePropertyChangeListener (listener);
+    }
+
+}

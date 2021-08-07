@@ -1,0 +1,85 @@
+package exercise3_2;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+import javax.swing.*;
+
+public class Temp extends JApplet implements MemoryListener {
+  boolean isStandalone = false;
+  MemoryWatch memoryWatch1 = new MemoryWatch();
+  JScrollPane jScrollPane1 = new JScrollPane();
+  JTextArea jTextArea1 = new JTextArea();
+
+  /**Initialize the applet*/
+  public void init() {
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**Component initialization*/
+  private void jbInit() throws Exception {
+    this.setSize(new Dimension(400,300));
+    jTextArea1.setText("jTextArea1");
+    memoryWatch1.addMemoryListener(new MemoryListener() {
+      public void sufficientMemory(MemoryEvent e) {
+      }
+
+      public void insufficientMemory(MemoryEvent e) {
+        memoryWatch1_insufficientMemory(e);
+      }
+    });
+
+    memoryWatch1.addMemoryListener(new MemoryListener() {
+      public void sufficientMemory(MemoryEvent e) {
+        memoryWatch1_sufficientMemory(e);
+      }
+
+      public void insufficientMemory(MemoryEvent e) {
+      }
+    });
+    this.getContentPane().add(jScrollPane1, BorderLayout.CENTER);
+    jScrollPane1.getViewport().add(jTextArea1, null);
+  }
+
+  //Main method
+  public static void main(String[] args) {
+    Exercise3_2 applet = new Exercise3_2();
+    applet.isStandalone = true;
+    JFrame frame = new JFrame();
+    frame.setTitle("Exercise 3.1");
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(400,320);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / 2, (d.height - frame.getSize().height) / 2);
+    frame.setVisible(true);
+  }
+
+  public void sufficientMemory(MemoryEvent e) {
+    jTextArea1.setText("Sufficient Memory");
+    jTextArea1.append("highLimit " + memoryWatch1.getHighLimit()+"\n");
+    jTextArea1.append("free memory " + e.freeMemory() + "\n");
+    jTextArea1.append("total memory " + e.totalMemory() + "\n");
+  }
+
+  public void insufficientMemory(MemoryEvent e) {
+    jTextArea1.setText("Insufficient Memory\n");
+    jTextArea1.append("lowLimit " + memoryWatch1.getLowLimit()+"\n");
+    jTextArea1.append("free memory " + e.freeMemory() + "\n");
+    jTextArea1.append("total memory " + e.totalMemory() + "\n");
+  }
+
+  void memoryWatch1_insufficientMemory(MemoryEvent e) {
+    insufficientMemory(e);
+  }
+
+  void memoryWatch1_sufficientMemory(MemoryEvent e) {
+    sufficientMemory(e);
+  }
+}

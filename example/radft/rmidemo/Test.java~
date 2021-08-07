@@ -1,0 +1,18 @@
+/*
+ * Test.java
+ *
+ * Created on September 14, 2001, 11:17 PM
+ */
+
+package rmidemo;
+
+import java.rmi.*;
+
+/** Remote interface.
+ *
+ * @author administrator
+ * @version 1.0
+ */
+public interface Test extends java.rmi.Remote {
+    // public String about() throws RemoteException;
+}

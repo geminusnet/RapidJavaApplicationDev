@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>
+StudentScore
+</title>
+</head>
+<body>
+
+<p>Output from servlet <code>StudentScore</code> GET:</p>
+<hr>
+<servlet
+  codebase=""
+  code="studentscoredemo.StudentScore.class"
+>
+<param name="ssn" value="" />
+</servlet>
+<hr>
+<p><a href="/servlet/studentscoredemo.StudentScore?ssn=675-03-9896">Click here to call Servlet: StudentScore</a></p>
+</body>
+</html>

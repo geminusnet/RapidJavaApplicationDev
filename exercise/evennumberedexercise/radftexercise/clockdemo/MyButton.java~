@@ -1,0 +1,26 @@
+package clockdemo;
+
+import javax.swing.JButton;
+import java.awt.*;
+
+/**
+ * Title:        Clock Demo
+ * Description:
+ * Copyright:    Copyright (c) 2000
+ * Company:      Armstrong Atlantic State University
+ * @author Y. Daniel Liang
+ * @version 1.0
+ */
+
+public class MyButton extends JButton
+{
+
+  public MyButton()
+  {
+  }
+
+  public void setLayout(LayoutManager layout)
+  {
+
+  }
+}

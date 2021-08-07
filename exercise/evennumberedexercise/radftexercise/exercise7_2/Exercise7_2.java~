@@ -1,0 +1,21 @@
+/*
+ * Exercise7_2.java
+ *
+ * Created on April 19, 2002, 6:05 AM
+ */
+
+package exercise7_2;
+
+/**
+ *
+ * @author  administrator
+ */
+public class Exercise7_2 extends java.applet.Applet {
+  
+  /** Initialization method that will be called after the applet is loaded
+   *  into the browser.
+   */
+  public void init() {
+  }
+  
+}

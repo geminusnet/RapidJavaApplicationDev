@@ -1,0 +1,89 @@
+/*
+ * Test.java  --  server side implementation
+ *
+ * Created on September 15, 2001, 9:02 PM for JDK 1.3 ORB
+ * with Naming Service binding.
+ */
+
+package corbademo;
+
+import org.omg.CORBA.ORB;
+
+import java.util.Properties;
+import org.omg.CosNaming.NamingContext;
+import org.omg.CosNaming.NamingContextHelper;
+import org.omg.CosNaming.NameComponent;
+/**
+ *
+ * @author  administrator
+ * @version 
+ */
+public class Test {
+
+  /** Creates new Test */
+    public Test() {
+    }
+
+    /**
+    * @param args the command line arguments
+    */
+    public static void main (String args[]) {
+
+	try {
+          Properties props = System.getProperties();
+
+          ORB orb = ORB.init(args, props);
+
+          
+          // add your creating of object implementation here
+    /*servant_class*/ /*servant_variable*/ = new /*servant_class*/();
+    orb.connect(/*servant_variable*/);
+
+    // the server will use Naming Service
+    org.omg.CORBA.Object ns = orb.resolve_initial_references("NameService");
+    if (ns == null)
+      throw new RuntimeException();
+    NamingContext nc = NamingContextHelper.narrow(ns);
+    if (nc == null)
+      throw new RuntimeException();
+    
+    // create and bind Naming Contexts
+    // paste code retrieved using the Copy Client/Server Code action
+    // (on the corresponding node in the Naming Service Browser) here
+    NameComponent[] nc1Name = new NameComponent[1];
+    NamingContext nc1 = null;
+    for (int i=0; i<hierarchy_of_contexts.length / 2; i++) {
+      nc1Name[0] = new NameComponent();
+      nc1Name[0].id = hierarchy_of_contexts[i*2];
+      nc1Name[0].kind = hierarchy_of_contexts[i*2+1];
+      try {
+        nc1 = nc.bind_new_context(nc1Name);
+        nc = nc1;
+      } catch (org.omg.CosNaming.NamingContextPackage.AlreadyBound e) {
+        org.omg.CORBA.Object o = nc.resolve(nc1Name);
+        if (o == null)
+          throw new RuntimeException();
+        nc1 = NamingContextHelper.narrow(o);
+        if (nc1 == null)
+          throw new RuntimeException();
+        nc = nc1;
+      }
+    }
+    
+    // bind names with the Naming Service
+    NameComponent[] aName = new NameComponent[1];
+    aName[0] = new NameComponent();
+    aName[0].id = name_of_server[0];
+    aName[0].kind = name_of_server[1];
+    nc.bind(aName, /*servant_variable*/);
+
+    
+    java.lang.Object sync = new java.lang.Object();
+    synchronized (sync) {
+      sync.wait();
+    }
+	} catch (Exception ex) {
+	     ex.printStackTrace ();
+	}
+    }
+}

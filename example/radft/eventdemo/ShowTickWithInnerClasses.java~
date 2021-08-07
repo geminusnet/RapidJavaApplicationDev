@@ -1,0 +1,20 @@
+/*
+ * ShowTickWithInnerClasses.java
+ *
+ * Created on September 3, 2001, 11:07 AM
+ */
+
+package eventdemo;
+
+/**
+ *
+ * @author  administrator
+ * @version 
+ */
+public class ShowTickWithInnerClasses extends javax.swing.JApplet {
+
+  /** Creates new ShowTickWithInnerClasses */
+    public ShowTickWithInnerClasses() {
+    }
+
+}

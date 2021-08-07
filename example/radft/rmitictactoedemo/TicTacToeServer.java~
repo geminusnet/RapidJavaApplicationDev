@@ -1,0 +1,32 @@
+/**
+ * Title:        RMI TicTacToe Using Callback
+ * Description:  Examples for Chapter 15
+ * Copyright:    Copyright (c) 2000
+ * Company:      Armstrong Atlantic State University
+ * @author Y. Daniel Liang
+ * @version 1.0
+ */
+
+// TicTacToeServer.java: Launch TicTacTorImpl
+package rmitictactoe;
+
+import java.rmi.*;
+import java.rmi.server.*;
+
+public class TicTacToeServer
+{
+  public static void main(String args[])
+  {
+    System.setSecurityManager(new RMISecurityManager());
+    try
+    {
+      TicTacToeImpl ticTacToeImpl = new TicTacToeImpl();
+      Naming.rebind("TicTacToe Server", ticTacToeImpl);
+      System.out.println("Server registered");
+    }
+    catch(Exception ex)
+    {
+      System.out.println(ex);
+    }
+  }
+}

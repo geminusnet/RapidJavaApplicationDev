@@ -1,0 +1,14 @@
+package beaninfodemo;
+
+import java.beans.PropertyEditorSupport;
+
+public class GenderEditor extends PropertyEditorSupport {
+  public String[] getTags() {
+    String[] choices = {"Male", "Female"};
+    return choices;
+  }
+
+  public String getJavaInitializationString() {
+    return "\"" + getValue().toString() + "\"";
+  }
+}

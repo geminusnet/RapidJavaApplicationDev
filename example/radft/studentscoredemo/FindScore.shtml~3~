@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Simple Registration</title>
+</head>
+<body>
+Find your current score</font>
+
+<form method="get" action="/servlet/studentscoredemo.FindScore">
+<p>SSN&nbsp;<input type="text" name="ssn">&nbsp;
+   <p>Course&nbsp;<select size="1" name="course">
+          <option value="CSCI1301">CSCI1301-004</option>
+          <option value="CSCI1302">CSCI1302-001</option>
+          <option value="CSCI4990">CSCI4990-001</option>
+         </select>&nbsp;
+<p><input type="submit" name="Submit" value="Submit">
+   <input type="reset" value="Reset"></p>
+</form>
+</body>
+</html>

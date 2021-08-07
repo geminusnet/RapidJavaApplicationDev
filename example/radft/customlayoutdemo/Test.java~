@@ -1,0 +1,18 @@
+package customlayoutdemo;
+
+/**
+ * Title:        Chapter 1, "Introduction to Java and JBuilder"
+ * Description:  Examples for Chapter 1
+ * Copyright:    Copyright (c) 2000
+ * Company:      Armstrong Atlantic State University
+ * @author Y. Daniel Liang
+ * @version 1.0
+ */
+
+public class Test
+{
+
+  public Test()
+  {
+  }
+}

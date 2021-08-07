@@ -1,0 +1,108 @@
+package eventdemo;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+import javax.swing.*;
+import messagepaneldemo.*;
+
+public class ShowTickWithStandardAdapter extends JApplet {
+
+  boolean isStandalone = false;
+  MessagePanel messagePanel1 = new MessagePanel();
+  Tick tick1 = new Tick();
+
+  /**Initialize the applet*/
+  public void init() {
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**Component initialization*/
+  private void jbInit() throws Exception {
+    this.setSize(new Dimension(400,300));
+    messagePanel1.setBackground(Color.cyan);
+    messagePanel1.setYCoordinate(30);
+    messagePanel1.addMouseListener(new
+      ShowTickWithStandardAdapter_messagePanel1_mouseAdapter(this));
+    tick1.addTickListener(new
+      ShowTickWithStandardAdapter_tick1_tickAdapter(this));
+    this.getContentPane().add(messagePanel1, BorderLayout.CENTER);
+  }
+
+  void tick1_handleTick(TickEvent e) {
+    messagePanel1.setMessage("Tick count is " + e.getTickCount() +
+      " and tick interval is " + e.getTickInterval());
+  }
+
+  void messagePanel1_mousePressed(MouseEvent e) {
+    tick1.suspend();
+  }
+
+  void messagePanel1_mouseReleased(MouseEvent e) {
+    tick1.resume();
+  }
+  /**Main method*/
+  public static void main(String[] args)
+  {
+    ShowTickWithStandardAdapter applet = new ShowTickWithStandardAdapter();
+    applet.isStandalone = true;
+    JFrame frame = new JFrame();
+    //EXIT_ON_CLOSE == 3
+    frame.setDefaultCloseOperation(3);
+    frame.setTitle("Applet Frame");
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(400,320);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / 2, (d.height - frame.getSize().height) / 2);
+    frame.setVisible(true);
+  }
+
+  //static initializer for setting look & feel
+  static
+  {
+    try
+    {
+      //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      //UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+    }
+    catch(Exception e)
+    {
+    }
+  }
+}
+
+class ShowTickWithStandardAdapter_tick1_tickAdapter
+  implements eventdemo.TickListener {
+  ShowTickWithStandardAdapter adaptee;
+
+  ShowTickWithStandardAdapter_tick1_tickAdapter(
+    ShowTickWithStandardAdapter adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void handleTick(TickEvent e) {
+    adaptee.tick1_handleTick(e);
+  }
+}
+
+class ShowTickWithStandardAdapter_messagePanel1_mouseAdapter
+  extends java.awt.event.MouseAdapter {
+  ShowTickWithStandardAdapter adaptee;
+
+  ShowTickWithStandardAdapter_messagePanel1_mouseAdapter(
+    ShowTickWithStandardAdapter adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void mousePressed(MouseEvent e) {
+    adaptee.messagePanel1_mousePressed(e);
+  }
+  public void mouseReleased(MouseEvent e) {
+    adaptee.messagePanel1_mouseReleased(e);
+  }
+}

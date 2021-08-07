@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.0" type="org.netbeans.modules.form.forminfo.JAppletFormInfo">
+  <SyntheticProperties>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="(No Menu)"/>
+  </SyntheticProperties>
+
+  <AuxValues>
+  </AuxValues>
+
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="jbtChangeColor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Change Button Text Color"/>
+      </Properties>
+
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtChangeColorActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="dialogdemo.ColorDialog" name="colorDialog1">
+    </Component>
+  </SubComponents>
+</Form>

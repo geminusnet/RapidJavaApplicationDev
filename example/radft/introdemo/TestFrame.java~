@@ -1,0 +1,76 @@
+package introdemo;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class TestFrame extends JFrame implements ActionListener {
+
+  // Declare three text fields
+  private JTextField jtfNum1, jtfNum2, jtfResult;
+
+  // Declare Add button
+  private JButton jbtAdd;
+
+  JPanel contentPane;
+  BorderLayout borderLayout1 = new BorderLayout();
+
+  /**Construct the frame*/
+  public TestFrame() {
+    enableEvents(AWTEvent.WINDOW_EVENT_MASK);
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**Component initialization*/
+  private void jbInit() throws Exception {
+    //setIconImage(Toolkit.getDefaultToolkit().
+    //  createImage(TestFrame.class.getResource("[Your Icon]")));
+    contentPane = (JPanel)this.getContentPane();
+    contentPane.setLayout(borderLayout1);
+    this.setSize(new Dimension(400, 300));
+    this.setTitle("TestUIApplication");
+
+    // Place labels and text fields in a panel
+    JPanel p1 = new JPanel();
+    p1.setLayout(new FlowLayout());
+    p1.add(new JLabel("Number 1"));
+    p1.add(jtfNum1 = new JTextField(3));
+    p1.add(new JLabel("Number 2"));
+    p1.add(jtfNum2 = new JTextField(3));
+    p1.add(new JLabel("Result"));
+    p1.add(jtfResult = new JTextField(4));
+    jtfResult.setEditable(false);  // Set it noneditable
+
+    // Add the panel and the Add button in the frame
+    contentPane.add(p1, BorderLayout.CENTER);
+    contentPane.add(jbtAdd = new JButton("Add"), BorderLayout.SOUTH);
+
+    // Register listener
+    jbtAdd.addActionListener(this);
+  }
+
+  /**Handle add button action*/
+  public void actionPerformed(ActionEvent e) {
+    int num1 =
+      (Integer.valueOf(jtfNum1.getText().trim())).intValue();
+    int num2 =
+      (Integer.valueOf(jtfNum2.getText().trim())).intValue();
+    int result = num1 + num2;
+
+    // Display result
+    jtfResult.setText(String.valueOf(result));
+  }
+
+  /**Overridden so we can exit when window is closed*/
+  protected void processWindowEvent(WindowEvent e) {
+    super.processWindowEvent(e);
+    if (e.getID() == WindowEvent.WINDOW_CLOSING) {
+      System.exit(0);
+    }
+  }
+}

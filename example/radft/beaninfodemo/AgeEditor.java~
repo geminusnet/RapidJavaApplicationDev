@@ -1,0 +1,23 @@
+package beaninfodemo;
+import java.beans.PropertyEditorSupport;
+
+public class AgeEditor extends PropertyEditorSupport {
+  public String getAsText() {
+    return getValue().toString();
+  }
+
+  public void setAsText(String text) throws IllegalArgumentException
+  {
+    Integer val = new Integer(text);
+    if (val.intValue()<= 0)
+      throw new IllegalArgumentException("Age may not be negative");
+    else if (val.intValue() >= 150)
+      throw
+        new IllegalArgumentException("Age may not be greater than 150");
+    setValue(val);
+  }
+
+  public String getJavaInitializationString() {
+    return getAsText();
+  }
+}

@@ -1,0 +1,96 @@
+package imageviewerdemo;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+import javax.swing.*;
+
+public class SixImages extends JApplet {
+  boolean isStandalone = false;
+  GridLayout gridLayout1 = new GridLayout();
+  ImageViewer imageViewer1 = new ImageViewer();
+  ImageViewer imageViewer2 = new ImageViewer();
+  ImageViewer imageViewer3 = new ImageViewer();
+  ImageViewer imageViewer4 = new ImageViewer();
+  ImageViewer imageViewer5 = new ImageViewer();
+  ImageViewer imageViewer6 = new ImageViewer();
+
+  /**Get a parameter value*/
+  public String getParameter(String key, String def) {
+    return isStandalone ? System.getProperty(key, def) :
+      (getParameter(key) != null ? getParameter(key) : def);
+  }
+
+  /**Construct the applet*/
+  public SixImages() {
+  }
+
+  /**Initialize the applet*/
+  public void init() {
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**Component initialization*/
+  private void jbInit() throws Exception {
+    gridLayout1.setRows(2);
+    gridLayout1.setColumns(3);
+    gridLayout1.setHgap(10);
+    gridLayout1.setVgap(10);
+    this.setSize(new Dimension(400,300));
+    this.getContentPane().setLayout(gridLayout1);
+    imageViewer1.setImageFilename("../image/us.gif");
+    imageViewer2.setImageFilename("../image/ca.gif");
+    imageViewer3.setImageFilename("../image/india.gif");
+    imageViewer4.setImageFilename("../image/uk.gif");
+    imageViewer5.setImageFilename("../image/china.gif");
+    imageViewer6.setImageFilename("../image/norway.gif");
+    this.getContentPane().add(imageViewer1, null);
+    this.getContentPane().add(imageViewer2, null);
+    this.getContentPane().add(imageViewer3, null);
+    this.getContentPane().add(imageViewer4, null);
+    this.getContentPane().add(imageViewer5, null);
+    this.getContentPane().add(imageViewer6, null);
+  }
+
+  /**Get Applet information*/
+  public String getAppletInfo() {
+    return "Applet Information";
+  }
+
+  /**Get parameter info*/
+  public String[][] getParameterInfo() {
+    return null;
+  }
+
+  /**Main method*/
+  public static void main(String[] args) {
+    SixImages applet = new SixImages();
+    applet.isStandalone = true;
+    JFrame frame = new JFrame();
+    //EXIT_ON_CLOSE == 3
+    frame.setDefaultCloseOperation(3);
+    frame.setTitle("SixImages");
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(400,320);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / 2, (d.height - frame.getSize().height) / 2);
+    frame.setVisible(true);
+  }
+
+  //static initializer for setting look & feel
+  static {
+    try {
+      //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      //UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+    }
+    catch(Exception e) {
+    }
+  }
+}

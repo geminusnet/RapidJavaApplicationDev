@@ -1,0 +1,269 @@
+package clockdemo;
+
+import java.awt.*;
+import javax.swing.*;
+import java.lang.Runnable;
+import java.util.*;
+import java.text.*;
+import java.io.*;
+
+public class Clock extends Component implements Runnable {
+
+  // Create a thread to control clock running
+  protected transient Thread thread;
+  private java.awt.Color secondHandColor = Color.black;
+  private java.awt.Color minuteHandColor = Color.black;
+  private java.awt.Color hourHandColor = Color.red;
+  private java.awt.Color digitalDateTimeColor = Color.black;
+  private java.awt.Color headerColor = Color.black;
+  private boolean running;
+  private boolean showingDigitalDateTime = true;
+  // TimeSytle 0-FULL, 1-LONG, 2-MEDIUM, 3-SHORT
+  private int timeStyle = 3;
+  // DateSytle 0-FULL, 1-LONG, 2-MEDIUM, 3-SHORT
+  private int dateStyle = 3;
+  private boolean showingHeader = true;
+  private java.lang.String header = "Savannah";
+  private java.lang.String timeZoneID = "EST";
+  private int timeZoneOffset;
+  private boolean usingTimeZoneID = true;
+
+  /**Create TimeZone*/
+  protected TimeZone tz = TimeZone.getDefault();
+
+  public Clock() {
+    // Start clock
+    setRunning(true);
+  }
+
+  public java.awt.Color getSecondHandColor() {
+    return secondHandColor;
+  }
+
+  public void setSecondHandColor(java.awt.Color newSecondHandColor) {
+    secondHandColor = newSecondHandColor;
+  }
+
+  public void setMinuteHandColor(java.awt.Color newMinuteHandColor) {
+    minuteHandColor = newMinuteHandColor;
+  }
+
+  public java.awt.Color getMinuteHandColor() {
+    return minuteHandColor;
+  }
+
+  public void setHourHandColor(java.awt.Color newHourHandColor) {
+    hourHandColor = newHourHandColor;
+  }
+
+  public java.awt.Color getHourHandColor() {
+    return hourHandColor;
+  }
+
+  public void setDigitalDateTimeColor(
+    java.awt.Color newDigitalDateTimeColor) {
+    digitalDateTimeColor = newDigitalDateTimeColor;
+  }
+
+  public java.awt.Color getDigitalDateTimeColor() {
+    return digitalDateTimeColor;
+  }
+
+  public void setHeaderColor(java.awt.Color newHeaderColor) {
+    headerColor = newHeaderColor;
+  }
+
+  public java.awt.Color getHeaderColor() {
+    return headerColor;
+  }
+
+  /**Start the clock*/
+  public void setRunning(boolean newRunning) {
+    running = newRunning;
+    if (running)
+      start();
+    else
+      stop();
+  }
+
+  public boolean isRunning() {
+    return running;
+  }
+
+  public void setShowingDigitalDateTime(boolean
+    newShowingDigitalDateTime) {
+    showingDigitalDateTime = newShowingDigitalDateTime;
+  }
+
+  public boolean isShowingDigitalDateTime() {
+    return showingDigitalDateTime;
+  }
+
+  public void setTimeStyle(int newtimeStyle) {
+    timeStyle = newtimeStyle;
+  }
+
+  public int getTimeStyle() {
+    return timeStyle;
+  }
+
+  public void setDateStyle(int newDateStyle) {
+    dateStyle = newDateStyle;
+  }
+
+  public int getDateStyle() {
+    return dateStyle;
+  }
+
+  public void setShowingHeader(boolean newShowingHeader) {
+    showingHeader = newShowingHeader;
+  }
+
+  public boolean isShowingHeader() {
+    return showingHeader;
+  }
+
+  public void setHeader(java.lang.String newHeader) {
+    header = newHeader;
+  }
+
+  public java.lang.String getHeader() {
+    return header;
+  }
+
+  public void setTimeZoneID(java.lang.String newTimeZoneID) {
+    timeZoneID = newTimeZoneID;
+  }
+
+  public java.lang.String getTimeZoneID() {
+    return timeZoneID;
+  }
+
+  public void setTimeZoneOffset(int newTimeZoneOffset) {
+    timeZoneOffset = newTimeZoneOffset;
+  }
+
+  public int getTimeZoneOffset() {
+    return tz.getRawOffset()/(1000*3600);
+  }
+
+  public void setUsingTimeZoneID(boolean newUsingTimeZoneID) {
+    usingTimeZoneID = newUsingTimeZoneID;
+  }
+
+  public boolean isUsingTimeZoneID() {
+    return usingTimeZoneID;
+  }
+
+  /**Display the clock*/
+  public void paint(Graphics g) {
+    //super.paintComponent(g);
+
+    int clockRadius = (int)Math.min(getWidth(), getHeight()*0.7*0.5);
+    int xCenter = (getWidth())/2;
+    int yCenter = (getHeight())/2;
+
+    // Draw circle
+    g.setColor(Color.black);
+    g.drawOval(xCenter - clockRadius, yCenter - clockRadius,
+      2*clockRadius, 2*clockRadius);
+    g.drawString("12", xCenter-5, yCenter-clockRadius+12);
+    g.drawString("9", xCenter-clockRadius+3, yCenter+5);
+    g.drawString("3", xCenter+clockRadius-10, yCenter+3);
+    g.drawString("6", xCenter-3, yCenter+clockRadius-3);
+
+    if (usingTimeZoneID)
+      tz = TimeZone.getTimeZone(timeZoneID);
+    else
+      tz.setRawOffset(timeZoneOffset*1000*3600);
+
+    // Get current time using GregorianCalendar
+    GregorianCalendar cal = new GregorianCalendar(tz);
+
+    // Draw second hand
+    int s = (int)cal.get(GregorianCalendar.SECOND);
+    int sLength = (int)(clockRadius*0.9);
+    int secondx =
+      (int)(xCenter + sLength*Math.sin(s*(2*Math.PI/60)));
+    int secondy =
+      (int)(yCenter - sLength*Math.cos(s*(2*Math.PI/60)));
+    g.setColor(secondHandColor);
+    g.drawLine(xCenter, yCenter, secondx, secondy);
+
+    // Draw minute hand
+    int m = (int)cal.get(GregorianCalendar.MINUTE);
+    int mLength = (int)(clockRadius*0.8);
+    int minutex =
+      (int)(xCenter + mLength*Math.sin(m*(2*Math.PI/60)));
+    int minutey =
+      (int)(yCenter - mLength*Math.cos(m*(2*Math.PI/60)));
+    g.setColor(minuteHandColor);
+    g.drawLine(xCenter, yCenter, minutex, minutey);
+
+    // Draw hour hand
+    int h = (int)cal.get(GregorianCalendar.HOUR_OF_DAY);
+    int hLength = (int)(clockRadius*0.7);
+    int hourx =
+      (int)(xCenter + hLength*Math.sin((h+m/60.0)*(2*Math.PI/12)));
+    int houry =
+      (int)(yCenter - hLength*Math.cos((h+m/60.0)*(2*Math.PI/12)));
+    g.setColor(hourHandColor);
+    g.drawLine(xCenter, yCenter, hourx, houry);
+
+    if (showingHeader) {
+      // Display header
+      FontMetrics fm = g.getFontMetrics();
+      g.setColor(headerColor);
+      g.drawString(header, (getWidth() -
+        fm.stringWidth(header))/2, (yCenter-clockRadius)/2);
+    }
+
+    if (showingDigitalDateTime) {
+      // Set display format in specified style, locale and timezone
+      DateFormat myFormat = DateFormat.getDateTimeInstance
+        (dateStyle, timeStyle, getLocale());
+      myFormat.setTimeZone(tz);
+
+      // Display time
+      String today = myFormat.format(cal.getTime());
+      FontMetrics fm = g.getFontMetrics();
+      g.setColor(digitalDateTimeColor);
+      g.drawString(today, (getWidth() -
+        fm.stringWidth(today))/2, yCenter+clockRadius+30);
+    }
+  }
+
+  /**Run the clock*/
+  public void run() {
+    //TODO: implement this java.lang.Runnable method;
+    while (true) {
+      if (thread == null) return;
+
+      try {
+        thread.sleep(1000);
+      }
+      catch (InterruptedException e) {}
+      repaint();
+    }
+  }
+
+  /**Start the clock*/
+  public void start() {
+    if (thread == null) {
+      thread = new Thread(this);
+      thread.start();
+    }
+  }
+
+  /**Stop the clock*/
+  public void stop() {
+    if (thread != null) {
+      thread = null;
+    }
+  }
+
+  /**Set the preferred size for the clock*/
+  public Dimension getPreferredSize() {
+    return new Dimension(200, 200);
+  }
+}

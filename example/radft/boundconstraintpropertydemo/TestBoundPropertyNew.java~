@@ -1,0 +1,55 @@
+package boundconstraintpropertydemo;
+
+public class TestBoundPropertyNew extends javax.swing.JFrame {
+  /** Creates new form TestBoundProperty */
+  public TestBoundPropertyNew() {
+    initComponents();
+  }
+  
+    private void initComponents() {
+      clock = new boundconstraintpropertydemo.ClockBoundPropertyListener();
+      editor = new boundconstraintpropertydemo.ClockEditor();
+      
+      getContentPane().setLayout(new java.awt.GridLayout(0, 2));
+      
+      setTitle("TestBoundProperty");
+      addWindowListener(new java.awt.event.WindowAdapter() {
+        public void windowClosing(java.awt.event.WindowEvent evt) {
+          exitForm(evt);
+        }
+      });
+      
+      getContentPane().add(clock);
+      
+      editor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        public void propertyChange(java.beans.PropertyChangeEvent evt) {
+      System.out.println("Insider Property changed");
+
+          editorPropertyChange(evt);
+        }
+      });
+      
+      getContentPane().add(editor);
+      
+      pack();
+    }
+    
+    private void editorPropertyChange(java.beans.PropertyChangeEvent evt) {
+      System.out.println("Property changed");
+      clock.propertyChange(evt);
+    }
+    
+    /** Exit the Application */
+    private void exitForm(java.awt.event.WindowEvent evt) {
+      System.exit(0);
+    }
+    
+    public static void main(String args[]) {
+      new TestBoundProperty().show();
+    }
+    
+    // Variables declaration - do not modify
+    private boundconstraintpropertydemo.ClockBoundPropertyListener clock;
+    private boundconstraintpropertydemo.ClockEditor editor;
+    // End of variables declaration
+}

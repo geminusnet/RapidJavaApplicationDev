@@ -1,0 +1,51 @@
+package beaninfodemo;
+
+import java.beans.*;
+
+public class ImageViewerBeanInfo extends SimpleBeanInfo {
+  Class beanClass = ImageViewer.class;
+  String iconColor16x16Filename;
+  String iconColor32x32Filename;
+  String iconMono16x16Filename;
+  String iconMono32x32Filename;
+
+  public ImageViewerBeanInfo() {
+  }
+
+  public PropertyDescriptor[] getPropertyDescriptors() {
+    try {
+      PropertyDescriptor _imageFilename = new PropertyDescriptor
+        ("imageFilename", beanClass,
+         "getImageFilename", "setImageFilename");
+      _imageFilename.setPropertyEditorClass
+        (beaninfodemo.ImageFilenameEditor.class);
+
+      PropertyDescriptor _strectched = new PropertyDescriptor
+        ("strectched", beanClass, "isStrectched", "setStrectched");
+      _strectched.setDisplayName("strectched");
+      _strectched.setShortDescription("strectched");
+
+      PropertyDescriptor[] pds = new PropertyDescriptor[] {
+        _imageFilename,
+        _strectched,
+      };
+      return pds;
+    }
+    catch (IntrospectionException ex) {
+      ex.printStackTrace();
+      return null;
+    }
+  }
+
+  public BeanInfo[] getAdditionalBeanInfo() {
+    Class superclass = beanClass.getSuperclass();
+    try {
+      BeanInfo superBeanInfo = Introspector.getBeanInfo(superclass);
+      return new BeanInfo[] { superBeanInfo };
+    }
+    catch (IntrospectionException ex) {
+      ex.printStackTrace();
+      return null;
+    }
+  }
+}

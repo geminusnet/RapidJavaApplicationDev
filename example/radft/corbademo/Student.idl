@@ -1,0 +1,11 @@
+//
+// Student.idl
+//
+// Created on September 15, 2001, 9:30 PM
+// by administrator
+//
+
+// Student.idl
+interface Student {
+  double findScore(in string name);
+};

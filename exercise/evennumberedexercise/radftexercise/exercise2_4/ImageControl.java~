@@ -1,0 +1,20 @@
+/*
+ * ImageControl.java
+ *
+ * Created on September 22, 2001, 10:40 PM
+ */
+
+package exercise2_4;
+
+/**
+ *
+ * @author  administrator
+ * @version 
+ */
+public class ImageControl {
+
+  /** Creates new ImageControl */
+    public ImageControl() {
+    }
+
+}

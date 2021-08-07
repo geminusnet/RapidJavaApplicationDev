@@ -1,0 +1,20 @@
+/*
+ * MyCalendar.java
+ *
+ * Created on September 23, 2001, 10:46 AM
+ */
+
+package exercise4_6;
+
+/**
+ *
+ * @author  administrator
+ * @version 
+ */
+public class MyCalendar {
+
+  /** Creates new MyCalendar */
+    public MyCalendar() {
+    }
+
+}

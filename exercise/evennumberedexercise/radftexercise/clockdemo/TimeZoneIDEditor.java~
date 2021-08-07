@@ -1,0 +1,22 @@
+package clockdemo;
+
+import java.beans.*;
+import java.util.TimeZone;
+
+public class TimeZoneIDEditor extends PropertyEditorSupport {
+  public TimeZoneIDEditor() {
+  }
+
+  public String[] getTags() {
+    return TimeZone.getAvailableIDs();
+  }
+
+  public String getJavaInitializationString() {
+    return "\"" + getAsText() + "\"";
+  }
+
+  public void setAsText(String text)
+    throws IllegalArgumentException {
+    setValue(text);
+  }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<attributes version="1.0">
+   <fileobject name="TestChart.java">
+      <attr name="class_dependency_javax.swing.JApplet" stringvalue="TestChart"/>
+   </fileobject>
+   <fileobject name="BarChartBeanInfo.java">
+      <attr name="class_dependency_java.beans.SimpleBeanInfo" stringvalue="BarChartBeanInfo"/>
+   </fileobject>
+   <fileobject name="BarChart.java">
+      <attr name="class_dependency_javax.swing.JPanel" stringvalue="BarChart"/>
+      <attr name="class_dependency_java.awt.event.ActionListener" stringvalue="BarChart"/>
+   </fileobject>
+</attributes>

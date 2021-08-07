@@ -1,0 +1,14 @@
+package customlayoutdemo;
+
+import com.borland.jbuilder.designer.ui.UIDesigner;
+import com.borland.jbuilder.designer.ui.BasicLayoutAssistant;
+
+public class DiagonalLayoutAssistant extends BasicLayoutAssistant {
+  /**Initializes and registers this OpenTool
+   */
+  public static void initOpenTool(
+    byte majorVersion, byte minorVersion) {
+    UIDesigner.registerAssistant(DiagonalLayoutAssistant.class,
+      "customlayoutdemo.DiagonalLayout", true);
+  }
+}

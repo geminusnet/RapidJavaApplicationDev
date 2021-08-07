@@ -1,0 +1,4 @@
+John F Smith#111-22-3333#83.5
+George K Yao#111-22-4444#59.6
+Frank R Kates#111-22-5555#95.4
+Kathy R Jones#111-22-6666#100

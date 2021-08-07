@@ -1,0 +1,18 @@
+package eventdemo;
+
+/**
+ * Title:        Event Demo
+ * Description:
+ * Copyright:    Copyright (c) 2000
+ * Company:      Armstrong Atlantic State University
+ * @author Y. Daniel Liang
+ * @version 1.0
+ */
+
+import eventdemo.TickEvent;
+
+public interface TickListener extends java.util.EventListener {
+
+  /**Handler for TickEvent*/
+  public void handleTick(TickEvent e);
+}

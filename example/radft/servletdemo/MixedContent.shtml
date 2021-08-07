@@ -1,0 +1,11 @@
+<html>
+<head>
+<title>
+MixedContent
+</title>
+</head>
+<body>
+
+<p><a href="/servlet/servletdemo.MixedContent?country=ca">Click here to call Servlet: MixedContent</a></p>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[PropertyInfo]
+centered,boolean,false,false, , ,true,<default>
+message,String,false,false, , ,true,<default>
+minimumSize,Dimension,false,false, , ,true,<default>
+preferredSize,Dimension,false,false, , ,true,<default>
+XCoordinate,int,false,false, , ,true,<default>
+YCoordinate,int,false,false, , ,true,<default>
+[IconNames]
+
+
+
+

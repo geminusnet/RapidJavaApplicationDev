@@ -1,0 +1,83 @@
+package modelviewdemo;
+
+public class CircleModelUsingBoundProperties {
+  
+  /** Holds value of property radius. */
+  private double radius;
+  
+  /** Utility field used by bound properties. */
+  private java.beans.PropertyChangeSupport propertyChangeSupport =  new java.beans.PropertyChangeSupport(this);
+  
+  /** Holds value of property filled. */
+  private boolean filled;
+  
+  /** Holds value of property color. */
+  private java.awt.Color color;
+  
+  /** Creates new CircleModelUsingBoundProperties */
+  public CircleModelUsingBoundProperties() {
+  }
+  
+  /** Add a PropertyChangeListener to the listener list.
+   * @param l The listener to add.
+   */
+  public void addPropertyChangeListener(java.beans.PropertyChangeListener l) {
+    propertyChangeSupport.addPropertyChangeListener(l);
+  }
+  
+  /** Removes a PropertyChangeListener from the listener list.
+   * @param l The listener to remove.
+   */
+  public void removePropertyChangeListener(java.beans.PropertyChangeListener l) {
+    propertyChangeSupport.removePropertyChangeListener(l);
+  }
+  
+  /** Getter for property radius.
+   * @return Value of property radius.
+   */
+  public double getRadius() {
+    return radius;
+  }
+  
+  /** Setter for property radius.
+   * @param radius New value of property radius.
+   */
+  public void setRadius(double radius) {
+    double oldRadius = this.radius;
+    this.radius = radius;
+    propertyChangeSupport.firePropertyChange("radius", new Double(oldRadius), new Double(radius));
+  }
+  
+  /** Getter for property filled.
+   * @return Value of property filled.
+   */
+  public boolean isFilled() {
+    return filled;
+  }
+  
+  /** Setter for property filled.
+   * @param filled New value of property filled.
+   */
+  public void setFilled(boolean filled) {
+    boolean oldFilled = this.filled;
+    this.filled = filled;
+    propertyChangeSupport.firePropertyChange("filled", new Boolean(oldFilled), new Boolean(filled));
+  }
+  
+  /** Getter for property color.
+   * @return Value of property color.
+   */
+  public java.awt.Color getColor() {
+    return color;
+  }
+  
+  /** Setter for property color.
+   * @param color New value of property color.
+   */
+  public void setColor(java.awt.Color color) {
+    java.awt.Color oldColor = this.color;
+    this.color = color;
+    propertyChangeSupport.firePropertyChange("color", oldColor, color);
+  }
+  
+}

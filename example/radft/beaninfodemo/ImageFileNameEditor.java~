@@ -1,0 +1,46 @@
+package beaninfodemo;
+
+import java.awt.*;
+import java.beans.*;
+
+public class ImageFilenameEditor extends PropertyEditorSupport {
+  private String imageFilename = "";
+  private ImageFilenameGUIEditor guiEditor;
+
+  public void setAsText(String text) {
+    setValue(text);
+  }
+
+  public void setValue(Object o) {
+    imageFilename = (String)o;
+    if (guiEditor != null)
+      guiEditor.imageFilename = imageFilename;
+
+    firePropertyChange();
+  }
+
+  public Object getValue() {
+    if (guiEditor != null)
+      this.imageFilename = guiEditor.imageFilename;
+
+    return imageFilename;
+  }
+
+  public String getAsText() {
+    return imageFilename;
+  }
+
+  public boolean supportsCustomEditor() {
+    return true;
+  }
+
+  public Component getCustomEditor() {
+    if (guiEditor == null)
+      guiEditor =  new ImageFilenameGUIEditor(imageFilename);
+    return guiEditor;
+  }
+
+  public String getJavaInitializationString() {
+    return "\"" + getAsText() + "\"";
+  }
+}

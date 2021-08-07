@@ -1,0 +1,43 @@
+package beaninfodemo;
+
+import java.awt.*;
+import java.net.URL;
+import java.awt.image.ImageProducer;
+
+public class ImageViewer extends Component {
+  private Image currentImage = null;
+  private String imageFilename = "";
+  private boolean strectched;
+
+  public void setImageFilename(String imageFilename) {
+    this.imageFilename = imageFilename;
+    Class myClass = getClass();
+    try {
+      URL url = myClass.getResource(imageFilename);
+      currentImage = createImage((ImageProducer)url.getContent());
+    }
+    catch (Exception ex) { }
+    repaint();
+  }
+
+  public String getImageFilename() {
+    return imageFilename;
+  }
+
+  public void paint(Graphics g) {
+    if (currentImage != null)
+      if (isStrectched())
+        g.drawImage(currentImage, 0, 0,
+          getSize().width, getSize().height, this);
+      else
+        g.drawImage(currentImage, 0, 0, this);
+   }
+
+  public void setStrectched(boolean newStrectched) {
+    strectched = newStrectched;
+  }
+
+  public boolean isStrectched() {
+    return strectched;
+  }
+}

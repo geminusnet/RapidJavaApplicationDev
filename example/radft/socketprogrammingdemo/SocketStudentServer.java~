@@ -1,0 +1,26 @@
+/*
+ * SocketStudentServer.java
+ *
+ * Created on September 15, 2001, 9:48 AM
+ */
+
+package socketprogrammingdemo;
+
+/**
+ *
+ * @author  administrator
+ * @version 
+ */
+public class SocketStudentServer {
+
+  /** Creates new SocketStudentServer */
+    public SocketStudentServer() {
+    }
+
+    /**
+    * @param args the command line arguments
+    */
+    public static void main (String args[]) {
+    }
+
+}

@@ -1,0 +1,74 @@
+package beaninfodemo;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.border.*;
+
+public class ImageFilenameGUIEditor extends JPanel
+  implements MouseListener {
+  private ImageViewer selectedImageViewer = new ImageViewer();
+  String imageFilename = "";
+
+  public ImageFilenameGUIEditor(String imageFilename) {
+    // Create panel p for holding images for selection
+    JPanel p = new JPanel();
+    p.setLayout(new GridLayout(2, 2, 0, 0));
+    p.setBorder(new TitledBorder("Choose an Image"));
+
+    // Place images in the panel p
+    ImageViewer[] imageViewer = new ImageViewer[4];
+    imageViewer[0].setImageFilename("../image/us.gif");
+    imageViewer[1].setImageFilename("../image/us.gif");
+    imageViewer[2].setImageFilename("../image/us.gif");
+    imageViewer[3].setImageFilename("../image/us.gif");
+
+    for (int i=0; i<4; i++)
+    {
+      imageViewer[i] = new ImageViewer();
+      imageViewer[i].addMouseListener(this);
+      p.add(imageViewer[i]);
+    }
+
+    // Panel p1 for organizing the selected image
+    JPanel p1 = new JPanel();
+    p1.setLayout(new GridLayout(1, 2, 0, 0));
+
+    // Create a label
+    JLabel jlbl;
+    p1.add(jlbl = new JLabel("Image Selected:"));
+    jlbl.setFont(new Font("TimesRoman", Font.BOLD, 24));
+
+    // Create selectedImageViewer
+    selectedImageViewer.setBackground(Color.yellow);
+    selectedImageViewer.setImageFilename(imageFilename);
+    p1.add(selectedImageViewer);
+
+    // Place p and p1 in the main panel
+    this.setLayout(new BorderLayout());
+    this.add("North", p1);
+    this.add("Center", p);
+  }
+
+  public Dimension getPreferredSize() {
+    return new Dimension(350, 150);
+  }
+
+  public void mouseClicked(MouseEvent e) {
+    ImageViewer imageViewer = (ImageViewer)e.getComponent();
+    imageFilename = imageViewer.getImageFilename();
+    selectedImageViewer.setImageFilename(imageFilename);
+  }
+
+  public void mousePressed(MouseEvent e) {
+  }
+
+  public void mouseReleased(MouseEvent e) {
+  }
+
+  public void mouseEntered(MouseEvent e)
+  {  }
+
+  public void mouseExited(MouseEvent e)
+  {  }
+}

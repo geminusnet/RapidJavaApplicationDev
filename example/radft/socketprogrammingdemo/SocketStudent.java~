@@ -1,0 +1,18 @@
+/*
+ * SocketStudent.java
+ *
+ * Created on September 15, 2001, 9:41 AM
+ */
+
+package socketprogrammingdemo;
+
+import java.rmi.*;
+
+/** Remote interface.
+ *
+ * @author administrator
+ * @version 1.0
+ */
+public interface SocketStudent extends java.rmi.Remote {
+    // public String about() throws RemoteException;
+}

@@ -1,0 +1,11 @@
+[PropertyInfo]
+hourHandColor,java.awt.Color,true,false,hourHandColor,hourHandColor,true,<default>
+showingDigitalDateTime,boolean,true,false,showingDigitalDateTime,showingDigitalDateTime,true,<default>
+timeZoneID,String,true,false,timeZoneID,timeZoneID,true,<default>
+timeZoneOffset,int,true,false,timeZoneOffset,timeZoneOffset,true,<default>
+usingTimeZoneID,boolean,false,false,usingTimeZoneID,usingTimeZoneID,true,<default>
+[IconNames]
+
+
+
+

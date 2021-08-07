@@ -1,0 +1,23 @@
+package clockdemo;
+
+/**
+ * Title:        Clock Demo
+ * Description:
+ * Copyright:    Copyright (c) 2000
+ * Company:      Armstrong Atlantic State University
+ * @author Y. Daniel Liang
+ * @version 1.0
+ */
+
+import java.awt.image.*;
+import java.awt.*;
+
+public class Test1 {
+  public static void main(String[] args) {
+
+    Image image = new BufferedImage(300, 200, BufferedImage.TYPE_INT_ARGB);
+    Graphics g = image.getGraphics();
+    Clock clock = new Clock();
+    clock.paint(g);
+  }
+}

@@ -1,0 +1,92 @@
+package modelviewdemo;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+import javax.swing.*;
+import javax.swing.border.*;
+
+public class TestCircleModel extends JApplet {
+
+  boolean isStandalone = false;
+  CircleEditor circleEditor1 = new CircleEditor();
+  TitledBorder titledBorder1;
+  CircleView circleView1 = new CircleView();
+  TitledBorder titledBorder2;
+  CircleModel circleModel1 = new CircleModel();
+
+  /**Get a parameter value*/
+  public String getParameter(String key, String def) {
+    return isStandalone ? System.getProperty(key, def) :
+      (getParameter(key) != null ? getParameter(key) : def);
+  }
+
+  /**Construct the applet*/
+  public TestCircleModel() {
+  }
+
+  /**Initialize the applet*/
+  public void init() {
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**Component initialization*/
+  private void jbInit() throws Exception {
+    titledBorder1 = new TitledBorder("");
+    titledBorder2 = new TitledBorder("");
+    this.setSize(new Dimension(234, 184));
+    circleEditor1.setBorder(titledBorder1);
+    circleEditor1.setModel(circleModel1);
+    titledBorder1.setTitle("CircleEditor");
+    circleView1.setBorder(titledBorder2);
+    circleView1.setModel(circleModel1);
+    titledBorder2.setTitle("CircleView");
+    circleModel1.setRadius(40.0);
+    circleModel1.setFilled(true);
+    circleModel1.setColor(Color.blue);
+    this.getContentPane().add(circleEditor1, BorderLayout.NORTH);
+    this.getContentPane().add(circleView1, BorderLayout.CENTER);
+  }
+
+  /**Get Applet information*/
+  public String getAppletInfo() {
+    return "Applet Information";
+  }
+
+  /**Get parameter info*/
+  public String[][] getParameterInfo() {
+    return null;
+  }
+
+  /**Main method*/
+  public static void main(String[] args) {
+    TestCircleModel applet = new TestCircleModel();
+    applet.isStandalone = true;
+    JFrame frame = new JFrame();
+    //EXIT_ON_CLOSE == 3
+    frame.setDefaultCloseOperation(3);
+    frame.setTitle("TestCircleModel");
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(400,320);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / 2, (d.height - frame.getSize().height) / 2);
+    frame.setVisible(true);
+  }
+
+  //static initializer for setting look & feel
+  static {
+    try {
+      //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      //UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+    }
+    catch(Exception e) {
+    }
+  }
+}

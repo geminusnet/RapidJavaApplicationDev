@@ -1,0 +1,182 @@
+package serializationdemo;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import messagepaneldemo.*;
+import java.io.*;
+import java.util.*;
+
+public class SerializationFrame extends JFrame {
+
+  JLabel statusBar = new JLabel();
+  BorderLayout borderLayout1 = new BorderLayout();
+  JPanel jpSerialization = new JPanel();
+  BorderLayout borderLayout2 = new BorderLayout();
+  JPanel jpRadioButtons = new JPanel();
+  MessagePanel messagePanel1 = new MessagePanel();
+  JPanel jpButtons = new JPanel();
+  JRadioButton jrbRed = new JRadioButton();
+  JRadioButton jrbGreen = new JRadioButton();
+  JRadioButton jrbYellow = new JRadioButton();
+  JButton jbtStore = new JButton();
+  JButton jbtRestore = new JButton();
+  JButton jbtLeft = new JButton();
+  JButton jbtRight = new JButton();
+
+  /**Construct the frame*/
+  public SerializationFrame() {
+    enableEvents(AWTEvent.WINDOW_EVENT_MASK);
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**Component initialization*/
+  private void jbInit() throws Exception {
+    this.getContentPane().setLayout(borderLayout1);
+    this.setSize(new Dimension(277, 152));
+    this.setTitle("Test Object Serialization");
+    statusBar.setText(" ");
+    jpSerialization.setLayout(borderLayout2);
+    jrbRed.setText("Red");
+    jrbRed.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jrbRed_actionPerformed(e);
+      }
+    });
+    jrbGreen.setText("Green");
+    jrbGreen.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jrbGreen_actionPerformed(e);
+      }
+    });
+    jrbYellow.setText("Yellow");
+    jrbYellow.addActionListener(
+      new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jrbYellow_actionPerformed(e);
+      }
+    });
+    jbtStore.setText("Store");
+    jbtStore.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtStore_actionPerformed(e);
+      }
+    });
+    jbtRestore.setText("Restore");
+    jbtRestore.addActionListener(
+      new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtRestore_actionPerformed(e);
+      }
+    });
+    jbtLeft.setText("<=");
+    jbtLeft.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtLeft_actionPerformed(e);
+      }
+    });
+    jbtRight.setText("=>");
+    jbtRight.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtRight_actionPerformed(e);
+      }
+    });
+    jpRadioButtons.setBorder(BorderFactory.createEtchedBorder());
+    jpButtons.setBorder(BorderFactory.createEtchedBorder());
+    messagePanel1.setBorder(BorderFactory.createRaisedBevelBorder());
+    this.getContentPane().add(statusBar, BorderLayout.SOUTH);
+    this.getContentPane().add(jpSerialization, BorderLayout.CENTER);
+    jpSerialization.add(jpRadioButtons, BorderLayout.NORTH);
+    jpRadioButtons.add(jrbRed, null);
+    jpRadioButtons.add(jrbGreen, null);
+    jpRadioButtons.add(jrbYellow, null);
+    jpSerialization.add(messagePanel1, BorderLayout.CENTER);
+    jpSerialization.add(jpButtons, BorderLayout.SOUTH);
+    jpButtons.add(jbtStore, null);
+    jpButtons.add(jbtRestore, null);
+    jpButtons.add(jbtLeft, null);
+    jpButtons.add(jbtRight, null);
+
+    // Group radio buttons
+    ButtonGroup btg = new ButtonGroup();
+    btg.add(jrbRed);
+    btg.add(jrbGreen);
+    btg.add(jrbYellow);
+  }
+
+  /**Overridden so we can exit on System Close*/
+  protected void processWindowEvent(WindowEvent e) {
+    super.processWindowEvent(e);
+    if(e.getID() == WindowEvent.WINDOW_CLOSING) {
+      System.exit(0);
+    }
+  }
+
+  /**Handle selecting red background in messagePanel1*/
+  void jrbRed_actionPerformed(ActionEvent e) {
+    messagePanel1.setBackground(Color.red);
+  }
+
+  /**Handle selecting green background in messagePanel1*/
+  void jrbGreen_actionPerformed(ActionEvent e) {
+    messagePanel1.setBackground(Color.green);
+  }
+
+  /**Handle selecting yellow background in messagePanel1*/
+  void jrbYellow_actionPerformed(ActionEvent e) {
+    messagePanel1.setBackground(Color.yellow);
+  }
+
+  /**Handle storing the objects*/
+  void jbtStore_actionPerformed(ActionEvent e) {
+    try {
+      ObjectOutputStream out =
+        new ObjectOutputStream(new FileOutputStream("beans.dat"));
+      out.writeObject(messagePanel1);
+      out.writeObject(new Date());
+      out.close();
+      statusBar.setText("The object is stored in beans.dat");
+    }
+    catch (IOException ex) {
+      System.out.println(ex);
+    }
+  }
+
+  /**Handle restoring the objects*/
+  void jbtRestore_actionPerformed(ActionEvent e) {
+    try {
+      ObjectInputStream in =
+        new ObjectInputStream(new FileInputStream("beans.dat"));
+      MessagePanel c = (MessagePanel)in.readObject();
+      Date d = (Date)in.readObject();
+      jpSerialization.remove(messagePanel1);
+      messagePanel1 = c;
+      jpSerialization.add(messagePanel1, BorderLayout.CENTER);
+      jpSerialization.repaint();
+      in.close();
+      statusBar.setText("The object saved at " + d.toString()
+        + " is restored");
+    }
+    catch (IOException ex1) {
+      System.out.println(ex1);
+    }
+    catch (ClassNotFoundException ex2) {
+      System.out.println(ex2);
+    }
+  }
+
+  /**Handle moving the message left*/
+  void jbtLeft_actionPerformed(ActionEvent e) {
+    messagePanel1.moveLeft();
+  }
+
+  /**Handle moving the message right*/
+  void jbtRight_actionPerformed(ActionEvent e) {
+    messagePanel1.moveRight();
+  }
+}

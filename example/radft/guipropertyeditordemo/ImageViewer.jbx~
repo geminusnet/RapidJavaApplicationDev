@@ -1,0 +1,8 @@
+[PropertyInfo]
+imageFilename,String,false,false, , ,true,AdvancedPropertyEditorDemo.ImageChooserEditor
+strectched,boolean,false,false,strectched,strectched,true,<default>
+[IconNames]
+
+
+
+

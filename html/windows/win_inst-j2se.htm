@@ -1,0 +1,384 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <title>Java&#153; 2 SDK, Standard Edition, v 1.4.0 - Installer Info</title>
+   <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body class="main">
+
+<h1>Java&#153; 2 SDK, Standard Edition, v 1.4.0<br><font size="+1">for Windows Installation</font></h1>
+
+<p>Read the following documentation before you <a href="#install">install</a> A Java&#153; 2 SDK from the CD.
+
+<p>Have you reviewed the Java&#153; 2 SDK <a href="la-j2se.htm">License Agreement</a>?
+
+<p align="center">
+<a href="#requirements">System Requirements</a> |
+<a href="#install-txt">Installation Instructions</a> |
+<a href="#troubleshooting">Troubleshooting</a>
+
+<hr>
+
+<!--BODYCOPY Start-->
+
+<a name="requirements"></a>
+<h3>System Requirements</h3>
+
+<p>The Java&#153; 2 SDK is intended for use on Windows 95, Windows 98 (1st or 2nd edition), Windows NT 4.0 with Service Pack 5, Windows ME, Windows XP Home, Windows XP Professional, Windows 2000 Professional, Windows 2000 Server, or Windows 2000 Advanced Server operating systems running on Intel hardware. In non-English locales, the only edition of Windows 2000 tested with this release is the Professional edition.
+
+<p>A Pentium 166MHz or faster processor with at least 32 megabytes of physical RAM is required to run graphically based applications. Forty-eight megabytes of RAM is recommended for applets running within a browser using the Java Plug-in product. Running with less memory may cause disk swapping which has a severe effect on performance. Very large programs may require more RAM for adequate performance. 
+
+<p>You should have 70 megabytes of free disk space before attempting to install the Java 2 SDK software.
+
+<hr>
+
+
+<a name="install-txt"></a>
+<h3>Installation Instructions</h3>
+
+<p>In this procedure, you will run the self-installing executable to unpack and install the Java 2 SDK software bundle. 
+
+<p><b>Note:</b> After the Java 2 SDK software has been installed, you will be asked to reboot your system, which completes the registry modifications that you will need if you ever want to deinstall this product later. To continue using these instructions after rebooting, either print them now or use your Web browser's history function to get back to this page.
+
+<p>The installation procedure has the following steps:
+
+<ol>
+	<li><a href="#Check">Check the download file size</a></li>
+	<li><a href="#pr-uninstall">Uninstall Pre-Release Versions of the Java 2 SDK 1.4</a></li>
+	<li><a href="#Run">Run the Java 2 SDK installer</a></li>
+	<li><a href="#Delete">Delete the downloaded file</a> (Optional)</li>
+	<li><a href="#path">Update the PATH variable</a></li>
+	<li><a href="#Running">Start using the Java 2 SDK!</a></li>
+	<li><a href="#uninstall">Uninstalling the Java 2 SDK</a></li>
+</ol>
+
+<p>If you have any difficulties, see the <a href="#troubleshooting">Troubleshooting</a> section at the end of this document or use this link to <a href="http://java.sun.com/cgi-bin/feedback.pl" target="new">report an installation problem</a>. 
+
+<a name="Check"></a>
+<ol type="1.">
+	<b><li>Check the download file size</b>
+
+<p>If you saved the self-installing executable to disk without running it from the download page at the Java Software web site, check to see that you have the complete file:
+
+<blockquote>
+<tt><b>j2sdk-1_4_0-win.exe &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 37067134 bytes</b></tt>
+</blockquote>
+
+<p>The file supplied on this CD should be 37067134 bytes as well.
+<br><br>
+<!-- ==================== Uninstall ==================== -->
+<a name="pr-uninstall"></a>
+	<b><li>Uninstall Pre-Release Versions of the Java 2 SDK 1.4</b>
+
+<p>If you have previously installed a Beta release or the Release Candidate version of Java 2 SDK 1.4, uninstall it.  Use the Microsoft Windows Add/Remove Programs utility, accessible from the Control Panel (Start --&gt; Settings --&gt; Control Panel).
+
+<br><br>
+<!-- ===================== Install ===================== -->
+<a name="Run"></a>
+	<b><li>Run the Java 2 SDK installer</b>
+
+<p><b>Note -</b> you must have administrative permissions in order to install the Java 2 SDK on Windows 2000 and Windows XP.
+
+<p>The file <tt><b>j2sdk-1_4_0-win.exe</b></tt> is the Java 2 SDK installer, double-click on the installer's icon. Then follow the instructions the installer provides. When done with the installation, you can delete the download file to recover disk space.  
+
+<p><b>Installed Directory Tree</b><br>The Java 2 SDK has the directory structure shown below. 
+
+<blockquote>
+<pre>
+                    jdk1.4
+  ____________________|___________________
+ |    |    |    |    |   |     |      |   |
+ |    |    |    |   bin lib    |    demo  |
+ |    |    | LICENSE |   |     |         jre
+ |    | COPYRIGHT              |        __|__
+ |  README                  include    |     |
+README.html                           bin   lib
+
+</pre>
+</blockquote>
+
+
+<p>In addition, the Java&#153; Plug-in product and Java&#153; Web Start product will automatically be installed.  Look for a Java Web Start icon on your desktop. There will also be an entry for Java Web Start in the Start --&gt; Programs menu. 
+
+<br><br>
+
+<!-- ===================== Delete ===================== -->
+<a name="Delete"></a>
+	<b><li>Delete the downloaded file (Optional)</b>
+
+<p>If you want to recover disk space, delete the file (or files) you originally downloaded. You will only need to do this if you copied the <tt><b>j2sdk-1_4_0-win.exe</b></tt> file to your harddrive.
+
+<p>You will not need to do this if you <a href="#install">install</a> the software directly from the CD.
+
+<br><br>
+<!-- ===================== Path ===================== -->
+<a name="path"></a>
+	<b><li>Update the PATH variable</b>
+
+<p>You can run the Java 2 SDK without setting the PATH variable, or you can optionally set it as a convenience.
+
+<p><b>Should I set the PATH variable?</b>
+<p>Set the PATH variable if you want to be able to conveniently run the Java 2 SDK executables (<tt><b>javac.exe</b></tt>, <tt><b>java.exe</b></tt>, <tt><b>javadoc.exe</b></tt>, etc.) from any directory without having to type the full path of the command. If you don't set the PATH variable, you need to specify the full path to the executable every time you run it, such as:
+
+<dl>
+    <dd><tt><b>C:> \jdk1.4\bin\javac MyClass.java</b></tt>
+</dl>
+
+<p>It's useful to set the PATH permanently so it will persist after rebooting.
+
+<a name="path-permanent"></a>
+<p><b>How do I set the PATH permanently?</b>
+<p>To set the PATH permanently, add the full path of the <tt><b>jdk1.4\bin</b></tt> directory to the PATH variable. Typically this full path looks something like <tt><b>C:\jdk1.4\bin</b></tt>.  Set the PATH as follows, according to whether you are on Windows NT or Windows 95/98/2000/ME.
+
+<p><b>Windows NT, Windows 2000, and Windows XP</b> - To set the PATH permanently:<br><br>
+
+	<ol type="a">
+		<li>Choose Start, Settings, Control Panel, and double-click System. On Windows NT, select the Environment tab; on Windows 2000 select the Advanced tab and then Environment Variables. Look for "Path" in the User Variables and System Variables. If you're not sure where to add the path, add it to the right end of the "Path" in the User Variables.  A typical value for PATH is:
+
+	<dl>
+	     <dd><tt><b>C:\jdk1.4\bin</b> </tt>
+	</dl>
+
+	<p>Capitalization doesn't matter.  Click "Set", "OK" or "Apply". 
+
+	<p>The PATH can be a series of directories separated by semi-colons (<tt><b>;</b></tt>). Microsoft Windows looks for programs in the PATH directories in order, from left to right. You should only have one <<tt>b>bin</b></tt> directory for a Java SDK in the path at a time (those following the first are ignored), so if one is already present, you can update it to jdk.
+
+<br><br>
+
+		<li>The new path takes effect in each new Command Prompt window you open after setting the PATH variable.
+
+	</ol>
+
+<p><b>Windows 98, Windows 95</b> - To set the PATH permanently, open the AUTOEXEC.BAT file and add or change the PATH statement as follows:<br><br>
+
+	<ol type="a">
+		<li>Start the system editor. Choose "Start", "Run" and enter <tt><b>sysedit</b></tt>, then click <b>OK</b>. The system editor starts up with several windows showing. Go to the window that is displaying AUTOEXEC.BAT
+	
+	<br><br>
+
+		<li>Look for the PATH statement. (If you don't have one, add one.) If you're not sure where to add the path, add it to the right end of the PATH.  For example, in the following PATH statement, we have added the <tt><b>bin</b></tt> directory at the right end:
+
+		<dl>
+			<dd><tt>PATH C:\WINDOWS;C:\WINDOWS\COMMAND;<b>C:\JDK1.4\BIN</b></tt>
+		</dl>
+
+		<p>Capitalization doesn't matter.  The PATH can be a series of directories separated by semi-colons (<tt><b>;</b></tt>).  Microsoft Windows searches for programs in the PATH directories in order, from left to right. You should only have one <tt><b>bin</b></tt> directory for a Java SDK in the path at a time (those following the first are ignored), so if one is already present, you can update it to jdk1.4.
+
+	<br><br>
+
+		<li>To make the path take effect in the current Command Prompt window, execute the following:
+
+	<dl>
+	      <tt>C:&gt; <b>c:\autoexec.bat</b></tt>
+	</dl>
+
+	<p>To find out the current value of your PATH, to see if it took effect, at the command prompt, type:
+
+	<dl>
+		<dd><tt>C:&gt; <b>path</b></tt>
+	</dl>
+
+	</ol>
+
+<p><b>Windows ME</b> - To set the PATH permanently: 
+
+<p>From the start menu, choose programs, accessories, system tools, and system information. This brings up a window titled &quot;Microsoft Help and Support&quot;. From here, choose the tools menu, then select the system configuration utility. Click the environment tab, select PATH and press the edit button. Now add the SDK to your path as described in step b above. After you've added the location of the SDK to your PATH, save the changes and reboot your machine when prompted. 
+
+<br><br>
+
+<!-- ===================== Running ===================== -->
+<a name="Running"></a>
+	<b><li>Start using the Java 2 SDK!</b>
+
+<p>Your computer system should now be ready to use the Java 2 SDK. In this step, you'll run some simple commands to make sure it is working properly.
+
+<p>If you are new to developing and running programs in the Java programming language, see <a href="http://java.sun.com/docs/books/tutorial/" target="new">The Java Tutorial</a> online for some guidance.  Note especially the tutorial trails under the heading <em>Trails Covering the Basics</em>.
+
+<p>You can also <a href="http://java.sun.com/j2se/1.4/download.html" target="new">download the Java 2 SDK documentation from the Java 2 SDK download page</a>.
+
+<br><br>
+
+<!-- ===================== Uninstalling  ===================== -->
+<a name="uninstall"></a>
+	<b><li>Uninstalling the Java 2 SDK</b>
+
+<p>If you should ever want to uninstall the Java 2 SDK, use the "Add/Remove Programs" utility in the Microsoft Windows Control Panel.  As an alternative method, if you still have file <tt><b>j2sdk-1_4_0-win.exe</b></tt>the you used to install the Java 2 SDK, you can double click on it to launch an uninstall program.
+</ol>
+
+<!-- ===================== Troubleshooting  ===================== -->
+
+<hr>
+
+<a name="troubleshooting"></a>
+<h3>Troubleshooting the Installation</h3>
+
+<p>Below are some tips for working around problems that are sometimes seen during or following an installation.  For more troubleshooting information, see the <a href="http://java.sun.com/products/jdk/faq.html" target="new">Java FAQ</a>.
+
+<ul type=disc>
+
+	<li><b>If you get an error about one of the following during InstallShield setup:</b><br><br>
+
+		<ul>
+			<li>Error extracting support files.  A typical error message is <br><br>
+			<dl>
+				<dd><tt><b>An Installation support file could not be installed.  The filename, directory or volume label syntax is incorrect.</b></tt></dl><br>
+			<li>Error installing Ikernel.exe (0x any number) <br><br>
+			<li>Access is denied <br><br>
+			<li>Error loading Type Library/DLL 
+		</ul>
+
+<p>These errors could be caused by a known problem with InstallShield. See the InstallShield web site for a discussion of this problem with possible solutions: <a href="http://support.installshield.com/kb/view.asp?pcode=ALL&articleid=Q104985" target="new">http://support.installshield.com/kb/view.asp?pcode=ALL&articleid=Q104985</a>
+
+<br><br>
+
+	<li><b>If you see the following error message:</b><br><br>
+
+<dl><dd><tt><b>
+The InstallShield engine (iKernel.exe) could not be launched.
+Error loading type library/DLL
+</b></tt></dl>
+
+<p>This message probably indicates that system file <tt><b>Stdole32.tlb</b></tt> is missing from your computer.  You can obtain this file from the Microsoft web site.  For Windows 98 platforms, for example, this file is included in the <a href="http://www.microsoft.com/Com/DCOM/Dcom98/relnotes.asp" target="new">DCOM98 product</a>.
+
+<br><br>
+
+	<li><b>If you see the following error message on Windows 2000</b> <br><br>
+
+<dl><dd><tt><b>
+   config.nt. The system file is not suitable for running MS-DOS 
+   and Microsoft Windows Applications.
+</b></tt></dl>
+
+<p>it indicates a problem with the %SystemRoot%\System32\COMMAND.COM file that has 
+been seen on some installations of Windows 2000.  If you encounter this error 
+message when you try to launch the installer, consult the Microsoft web site at <br><br>
+<dl>
+	<dd><a href="http://support.microsoft.com/support/kb/articles/Q142/2/71.asp" target="new">http://support.microsoft.com/support/kb/articles/Q142/2/71.asp</a>
+</dl>
+
+<p>for information about resolving the problem.
+
+<br><br>
+
+	<li><b>If you see the following error message</b><br><br>
+
+<dl><dd><tt><b>
+   corrupt cabinet file
+</b></tt></dl>
+
+<p>then the file you have downloaded is corrupted.  (A cabinet file
+contains compressed application, data, resource and DLL files.)  
+Check its file size against the expected file size listed in these
+instructions.  If they don't match, try downloading the
+bundle again.
+
+<br><br>
+
+	<li><b>If you see the following error message</b><br><br>
+
+<dl><dd><tt><b>
+   System Error during Decompression
+</b></tt></dl>
+
+<p>then you might not have enough space on the disk that contains your TEMP directory. 
+
+<br><br>
+
+	<li><b>If you see the following error message</b><br><br>
+<dl><dd><tt><b>
+   This program cannot be run in DOS mode.
+</b></tt></dl>
+
+<p>then do the following:<br><br>
+
+<ol type="1.">
+	<li>Open the MS-DOS shell (Windows/Start/Programs/MS-DOS Prompt)<br>
+	<li>Right-click on the title bar<br>
+	<li>Select Properties
+	<li>Choose the Program tab
+	<li>Push the Advanced button
+	<li>Make sure the item "Prevent MS-DOS-based programs from detecting Windows" is unchecked
+	<li>Select OK
+	<li>Select OK again
+	<li>Exit the MS-DOS shell
+	<li>Restart your computer.
+</ol>
+
+<br>
+
+<a name="winsock"></a>
+<li><b>Winsock Issues</b><br> The Java 2 SDK requires but does not include 
+the Microsoft Winsock 2.0 library. It is extremely likely that your system
+ already has Winsock 2.0 or later.  However, it is possible that some 
+Windows 95 systems have an older version of Winsock.
+
+<p>
+To check which version of Winsock you have, search for "winsock.dll".
+Then choose "Properties" from the File menu and click the Version tab.
+
+<p>
+If your Windows 95 machine doesn't have Winsock 2.0 or later. you 
+can download the Winsock 2.0 from this address: 
+<dl>
+	<dd><a href="http://www.microsoft.com/windows95/downloads/contents/wuadmintools/s_wunetworkingtools/w95sockets2/" target="new">http://www.microsoft.com/windows95/downloads/contents/wuadmintools/s_wunetworkingtools/w95sockets2/</a>
+</dl>
+
+<p>The following URL contains information about how to determine if 
+the Winsock 2.0 components are installed on a Windows 95 platform:
+
+<dl>
+	<dd><a href="http://support.microsoft.com/support/kb/articles/Q177/7/19.asp" target="new">http://support.microsoft.com/support/kb/articles/Q177/7/19.asp</a>
+</dl>
+
+<br><br>
+ 
+<a name="notepad"></a>
+	<li><b>Creating Source Files in Notepad</b> - In Microsoft Windows, 
+when you create a new file in Microsoft Notepad and then save it 
+for the first time, Notepad normally adds the <tt><b>.txt</b></tt> 
+extension to the filename.  Therefore, a file you name 
+<tt><b>Test.java</b></tt> is saved as <tt><b>Test.java.txt</b></tt>.  
+It's important to note that you cannot see the <tt><b>.txt</b></tt> 
+extension unless you turn on the viewing of file extensions 
+(in Windows Explorer, uncheck "Hide file extensions for known file 
+types" under Folder Options).  To prevent the <tt><b>.txt</b></tt> extension, 
+enclose the filename in quotation marks, such as 
+<tt><b>"Test.java"</b></tt>, when typing it into the Save As dialog box.
+
+<p>On the other hand, Microsoft WordPad does not add a file extension if 
+you provide one -- you must save the file as "Text Document".
+
+</ul>
+
+
+<!--BODYCOPY End-->
+
+<a name="install"></a>
+
+<h3>Installer File Location</h3>
+
+<p><a href="../../software-win/sj-sdk/j2sdk-1_4_0-win.exe">Install Java&#153; 2 SDK from the CD</a>
+
+<p><b>IMPORTANT:</b> When prompted by your browser please choose 'Run this program from its current location', click 'OK' and follow the instructions as they appear on screen.
+
+<p>It is also possible to install the software directly from the CD. The installer (<b>j2sdk-1_4_0-win.exe</b>) is located in the <b>software-win/sj-sdk/</b> directory on the root level of this CD-ROM.
+
+<dl>
+	<dt>For the latest information on Java&#153; 2 SDK please visit... 
+		<dd><a href="http://java.sun.com/j2se/" target="new">http://java.sun.com/j2se/</a>
+</dl>
+
+<hr width="100%">
+
+<p align="center"><font size="-1"><a href="win_install-main.htm">Back to Software Installation</a></font></p>
+
+<p>
+
+</body>
+</html>
+
+
+

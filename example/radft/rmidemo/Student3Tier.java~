@@ -1,0 +1,18 @@
+/*
+ * Student3Tier.java
+ *
+ * Created on September 15, 2001, 2:47 PM
+ */
+
+package rmidemo;
+
+import java.rmi.*;
+
+/** Remote interface.
+ *
+ * @author administrator
+ * @version 1.0
+ */
+public interface Student3Tier extends java.rmi.Remote {
+    // public String about() throws RemoteException;
+}

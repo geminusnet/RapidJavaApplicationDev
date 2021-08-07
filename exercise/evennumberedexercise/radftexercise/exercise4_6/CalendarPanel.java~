@@ -1,0 +1,47 @@
+/*
+ * CalendarPanel.java
+ *
+ * Created on March 25, 2002, 10:34 AM
+ */
+
+package exercise4_6;
+
+import java.beans.*;
+import javax.swing.*;
+/**
+ *
+ * @author  administrator
+ */
+public class CalendarPanel extends JPanel implements java.io.Serializable {
+    
+    private static final String PROP_SAMPLE_PROPERTY = "SampleProperty";
+    
+    private String sampleProperty;
+    
+    private PropertyChangeSupport propertySupport;
+    
+    /** Creates new CalendarPanel */
+    public CalendarPanel() {
+        propertySupport = new PropertyChangeSupport( this );
+    }
+    
+    public String getSampleProperty() {
+        return sampleProperty;
+    }
+    
+    public void setSampleProperty(String value) {
+        String oldValue = sampleProperty;
+        sampleProperty = value;
+        propertySupport.firePropertyChange(PROP_SAMPLE_PROPERTY, oldValue, sampleProperty);
+    }
+    
+    
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        propertySupport.addPropertyChangeListener(listener);
+    }
+    
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        propertySupport.removePropertyChangeListener(listener);
+    }
+    
+}

@@ -1,0 +1,131 @@
+package beaninfodemo;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.beans.*;
+
+public class BeanInsightFrame extends JFrame {
+  BorderLayout borderLayout1 = new BorderLayout();
+  JPanel jpInspect = new JPanel();
+  JScrollPane jScrollPane1 = new JScrollPane();
+  JTextArea jta = new JTextArea();
+  JPanel jpLabels = new JPanel();
+  JLabel jLabel1 = new JLabel();
+  JLabel jLabel2 = new JLabel();
+  BorderLayout borderLayout2 = new BorderLayout();
+  GridLayout gridLayout1 = new GridLayout();
+  JPanel jpSelections = new JPanel();
+  GridLayout gridLayout2 = new GridLayout();
+  JComboBox jcboTypes = new JComboBox();
+  JTextField jtfClass = new JTextField();
+  JButton jbtInspect = new JButton();
+
+  // Declare introspection type
+  private String introspectionType = "Properties";
+
+  /**Construct the frame*/
+  public BeanInsightFrame() {
+    enableEvents(AWTEvent.WINDOW_EVENT_MASK);
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**Component initialization*/
+  private void jbInit() throws Exception
+  {
+    this.getContentPane().setLayout(borderLayout1);
+    this.setSize(new Dimension(400, 300));
+    this.setTitle("Bean Introspection Demo");
+    jLabel1.setText("Inspection Type");
+    jLabel2.setText("Inspection Class");
+    jpInspect.setLayout(borderLayout2);
+    jpLabels.setLayout(gridLayout1);
+    gridLayout1.setRows(2);
+    jpSelections.setLayout(gridLayout2);
+    gridLayout2.setRows(2);
+    jbtInspect.setText("Inspect");
+    jbtInspect.addActionListener(new java.awt.event.ActionListener()
+    {
+      public void actionPerformed(ActionEvent e) {
+        jbtInspect_actionPerformed(e);
+      }
+    });
+    jcboTypes.addActionListener(new java.awt.event.ActionListener()
+    {
+      public void actionPerformed(ActionEvent e) {
+        jcboTypes_actionPerformed(e);
+      }
+    });
+    this.getContentPane().add(jpInspect, BorderLayout.NORTH);
+    jpInspect.add(jpLabels, BorderLayout.WEST);
+    jpLabels.add(jLabel1, null);
+    jpLabels.add(jLabel2, null);
+    jpInspect.add(jpSelections, BorderLayout.CENTER);
+    jpSelections.add(jcboTypes, null);
+    jpSelections.add(jtfClass, null);
+    jpInspect.add(jbtInspect, BorderLayout.EAST);
+    this.getContentPane().add(jScrollPane1, BorderLayout.CENTER);
+    jScrollPane1.getViewport().add(jta, null);
+
+    // Initialize combo box
+    jcboTypes.addItem("Properties");
+    jcboTypes.addItem("Events");
+    jcboTypes.addItem("Methods");
+  }
+
+  /**Overridden so we can exit on System Close*/
+  protected void processWindowEvent(WindowEvent e) {
+    super.processWindowEvent(e);
+    if(e.getID() == WindowEvent.WINDOW_CLOSING) {
+      System.exit(0);
+    }
+  }
+
+  /**Handle selecting inspection types*/
+  void jcboTypes_actionPerformed(ActionEvent e) {
+    introspectionType = (String)jcboTypes.getSelectedItem();
+  }
+
+  /**Handle the Inspect button*/
+  void jbtInspect_actionPerformed(ActionEvent e) {
+    try {
+      introspectBean(Class.forName(jtfClass.getText()));
+    }
+    catch (ClassNotFoundException ex) {
+      System.out.println("class not found");
+    }
+  }
+
+  /**Invoked from the button action to introspect a bean*/
+  public void introspectBean(Class beanClass) {
+    try {
+      BeanInfo bi = Introspector.getBeanInfo(beanClass);
+      if (introspectionType.equals("Properties")) {
+        PropertyDescriptor[] pd = bi.getPropertyDescriptors();
+        jta.setText(null);
+        for (int i=0; i<pd.length; i++)
+          jta.append(pd[i].getName() + "\n");
+      }
+      else if (introspectionType.equals("Events")) {
+        EventSetDescriptor[] ed = bi.getEventSetDescriptors();
+        jta.setText(null);
+        for (int i=0; i<ed.length; i++)
+          jta.append(ed[i].getName() + "\n");
+      }
+      else if (introspectionType.equals("Methods")) {
+        MethodDescriptor[] md = bi.getMethodDescriptors();
+        jta.setText(null);
+        for (int i=0; i<md.length; i++)
+          jta.append(md[i].getName() + "\n");
+      }
+    }
+    catch (IntrospectionException ex) {
+      System.out.println("Error during introspection");
+    }
+  }
+}

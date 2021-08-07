@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+
+Name: clockdemo/Clock.class
+Java-Bean: True
+
+Name: clockdemo/PersistentClock.class
+Java-Bean: True
+
+Name: clockdemo/ExternalizedClock.class
+Java-Bean: True

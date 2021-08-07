@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.0" type="org.netbeans.modules.form.forminfo.JAppletFormInfo">
+  <SyntheticProperties>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="(No Menu)"/>
+  </SyntheticProperties>
+
+  <AuxValues>
+  </AuxValues>
+
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+    <Property name="rows" type="int" value="2"/>
+    <Property name="columns" type="int" value="0"/>
+    <Property name="horizontalGap" type="int" value="5"/>
+    <Property name="verticalGap" type="int" value="5"/>
+  </Layout>
+  <SubComponents>
+    <Component class="imageviewerdemo.ImageViewer" name="imageViewer1">
+      <Properties>
+        <Property name="imageFilename" type="java.lang.String" value="/image/us.gif"/>
+      </Properties>
+    </Component>
+    <Component class="imageviewerdemo.ImageViewer" name="imageViewer2">
+      <Properties>
+        <Property name="imageFilename" type="java.lang.String" value="/image/ca.gif"/>
+      </Properties>
+    </Component>
+    <Component class="imageviewerdemo.ImageViewer" name="imageViewer3">
+      <Properties>
+        <Property name="imageFilename" type="java.lang.String" value="/image/india.gif"/>
+      </Properties>
+    </Component>
+    <Component class="imageviewerdemo.ImageViewer" name="imageViewer4">
+      <Properties>
+        <Property name="imageFilename" type="java.lang.String" value="/image/uk.gif"/>
+      </Properties>
+    </Component>
+    <Component class="imageviewerdemo.ImageViewer" name="imageViewer5">
+      <Properties>
+        <Property name="imageFilename" type="java.lang.String" value="/image/china.gif"/>
+      </Properties>
+    </Component>
+    <Component class="imageviewerdemo.ImageViewer" name="imageViewer6">
+      <Properties>
+        <Property name="imageFilename" type="java.lang.String" value="/image/norway.gif"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>

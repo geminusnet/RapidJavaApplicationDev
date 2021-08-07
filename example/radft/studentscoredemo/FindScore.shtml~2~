@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Simple Registration</title>
+</head>
+<body>
+Please register to your instructor's student address book.</font>
+
+<form method="post" action="http://localhost:8080/servlet/studentscoredemo.FindScore">
+<p>SSN <font color="#FF0000">*</font>
+    <input type="text" name="lastName">&nbsp;
+   Course <select size="1" name="course">
+          <option value="CSCI1301-004">CSCI1301-004</option>
+          <option value="CSCI1302-001">CSCI1302-001</option>
+          <option value="CSCI4990-001">CSCI4990-001</option>
+         </select>&nbsp;
+<p><input type="submit" name="Submit" value="Submit">
+   <input type="reset" value="Reset"></p>
+</form>
+<p><font color="#FF0000">* required fields</font></p>
+</body>
+</html>

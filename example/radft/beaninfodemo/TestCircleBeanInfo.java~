@@ -1,0 +1,604 @@
+package beaninfodemo;
+
+import java.beans.*;
+
+public class TestCircleBeanInfo extends SimpleBeanInfo {
+
+
+  // Bean descriptor //GEN-FIRST:BeanDescriptor
+  private static BeanDescriptor beanDescriptor = new BeanDescriptor  ( TestCircle.class , null );
+
+  static {//GEN-HEADEREND:BeanDescriptor
+
+    // Here you can add code for customizing the BeanDescriptor.
+
+}//GEN-LAST:BeanDescriptor
+
+  // Property identifiers //GEN-FIRST:Properties
+  private static final int PROPERTY_graphics = 0;
+  private static final int PROPERTY_enabled = 1;
+  private static final int PROPERTY_glassPane = 2;
+  private static final int PROPERTY_componentCount = 3;
+  private static final int PROPERTY_preferredSize = 4;
+  private static final int PROPERTY_documentBase = 5;
+  private static final int PROPERTY_inputContext = 6;
+  private static final int PROPERTY_colorModel = 7;
+  private static final int PROPERTY_lightweight = 8;
+  private static final int PROPERTY_showing = 9;
+  private static final int PROPERTY_contentPane = 10;
+  private static final int PROPERTY_name = 11;
+  private static final int PROPERTY_minimumSize = 12;
+  private static final int PROPERTY_layeredPane = 13;
+  private static final int PROPERTY_stub = 14;
+  private static final int PROPERTY_components = 15;
+  private static final int PROPERTY_valid = 16;
+  private static final int PROPERTY_appletInfo = 17;
+  private static final int PROPERTY_visible = 18;
+  private static final int PROPERTY_toolkit = 19;
+  private static final int PROPERTY_background = 20;
+  private static final int PROPERTY_foreground = 21;
+  private static final int PROPERTY_width = 22;
+  private static final int PROPERTY_cursor = 23;
+  private static final int PROPERTY_locationOnScreen = 24;
+  private static final int PROPERTY_layout = 25;
+  private static final int PROPERTY_graphicsConfiguration = 26;
+  private static final int PROPERTY_maximumSize = 27;
+  private static final int PROPERTY_accessibleContext = 28;
+  private static final int PROPERTY_componentOrientation = 29;
+  private static final int PROPERTY_height = 30;
+  private static final int PROPERTY_alignmentY = 31;
+  private static final int PROPERTY_inputMethodRequests = 32;
+  private static final int PROPERTY_alignmentX = 33;
+  private static final int PROPERTY_active = 34;
+  private static final int PROPERTY_treeLock = 35;
+  private static final int PROPERTY_dropTarget = 36;
+  private static final int PROPERTY_appletContext = 37;
+  private static final int PROPERTY_parent = 38;
+  private static final int PROPERTY_locale = 39;
+  private static final int PROPERTY_parameterInfo = 40;
+  private static final int PROPERTY_opaque = 41;
+  private static final int PROPERTY_rootPane = 42;
+  private static final int PROPERTY_displayable = 43;
+  private static final int PROPERTY_insets = 44;
+  private static final int PROPERTY_font = 45;
+  private static final int PROPERTY_codeBase = 46;
+  private static final int PROPERTY_JMenuBar = 47;
+  private static final int PROPERTY_doubleBuffered = 48;
+  private static final int PROPERTY_bounds = 49;
+  private static final int PROPERTY_y = 50;
+  private static final int PROPERTY_x = 51;
+  private static final int PROPERTY_peer = 52;
+  private static final int PROPERTY_focusTraversable = 53;
+  private static final int PROPERTY_component = 54;
+
+  // Property array 
+  private static PropertyDescriptor[] properties = new PropertyDescriptor[55];
+
+  static {
+    try {
+      properties[PROPERTY_graphics] = new PropertyDescriptor ( "graphics", TestCircle.class, "getGraphics", null );
+      properties[PROPERTY_enabled] = new PropertyDescriptor ( "enabled", TestCircle.class, "isEnabled", "setEnabled" );
+      properties[PROPERTY_glassPane] = new PropertyDescriptor ( "glassPane", TestCircle.class, "getGlassPane", "setGlassPane" );
+      properties[PROPERTY_componentCount] = new PropertyDescriptor ( "componentCount", TestCircle.class, "getComponentCount", null );
+      properties[PROPERTY_preferredSize] = new PropertyDescriptor ( "preferredSize", TestCircle.class, "getPreferredSize", null );
+      properties[PROPERTY_documentBase] = new PropertyDescriptor ( "documentBase", TestCircle.class, "getDocumentBase", null );
+      properties[PROPERTY_inputContext] = new PropertyDescriptor ( "inputContext", TestCircle.class, "getInputContext", null );
+      properties[PROPERTY_colorModel] = new PropertyDescriptor ( "colorModel", TestCircle.class, "getColorModel", null );
+      properties[PROPERTY_lightweight] = new PropertyDescriptor ( "lightweight", TestCircle.class, "isLightweight", null );
+      properties[PROPERTY_showing] = new PropertyDescriptor ( "showing", TestCircle.class, "isShowing", null );
+      properties[PROPERTY_contentPane] = new PropertyDescriptor ( "contentPane", TestCircle.class, "getContentPane", "setContentPane" );
+      properties[PROPERTY_name] = new PropertyDescriptor ( "name", TestCircle.class, "getName", "setName" );
+      properties[PROPERTY_minimumSize] = new PropertyDescriptor ( "minimumSize", TestCircle.class, "getMinimumSize", null );
+      properties[PROPERTY_layeredPane] = new PropertyDescriptor ( "layeredPane", TestCircle.class, "getLayeredPane", "setLayeredPane" );
+      properties[PROPERTY_stub] = new PropertyDescriptor ( "stub", TestCircle.class, null, "setStub" );
+      properties[PROPERTY_components] = new PropertyDescriptor ( "components", TestCircle.class, "getComponents", null );
+      properties[PROPERTY_valid] = new PropertyDescriptor ( "valid", TestCircle.class, "isValid", null );
+      properties[PROPERTY_appletInfo] = new PropertyDescriptor ( "appletInfo", TestCircle.class, "getAppletInfo", null );
+      properties[PROPERTY_visible] = new PropertyDescriptor ( "visible", TestCircle.class, "isVisible", "setVisible" );
+      properties[PROPERTY_toolkit] = new PropertyDescriptor ( "toolkit", TestCircle.class, "getToolkit", null );
+      properties[PROPERTY_background] = new PropertyDescriptor ( "background", TestCircle.class, "getBackground", "setBackground" );
+      properties[PROPERTY_foreground] = new PropertyDescriptor ( "foreground", TestCircle.class, "getForeground", "setForeground" );
+      properties[PROPERTY_width] = new PropertyDescriptor ( "width", TestCircle.class, "getWidth", null );
+      properties[PROPERTY_cursor] = new PropertyDescriptor ( "cursor", TestCircle.class, "getCursor", "setCursor" );
+      properties[PROPERTY_locationOnScreen] = new PropertyDescriptor ( "locationOnScreen", TestCircle.class, "getLocationOnScreen", null );
+      properties[PROPERTY_layout] = new PropertyDescriptor ( "layout", TestCircle.class, "getLayout", "setLayout" );
+      properties[PROPERTY_graphicsConfiguration] = new PropertyDescriptor ( "graphicsConfiguration", TestCircle.class, "getGraphicsConfiguration", null );
+      properties[PROPERTY_maximumSize] = new PropertyDescriptor ( "maximumSize", TestCircle.class, "getMaximumSize", null );
+      properties[PROPERTY_accessibleContext] = new PropertyDescriptor ( "accessibleContext", TestCircle.class, "getAccessibleContext", null );
+      properties[PROPERTY_componentOrientation] = new PropertyDescriptor ( "componentOrientation", TestCircle.class, "getComponentOrientation", "setComponentOrientation" );
+      properties[PROPERTY_height] = new PropertyDescriptor ( "height", TestCircle.class, "getHeight", null );
+      properties[PROPERTY_alignmentY] = new PropertyDescriptor ( "alignmentY", TestCircle.class, "getAlignmentY", null );
+      properties[PROPERTY_inputMethodRequests] = new PropertyDescriptor ( "inputMethodRequests", TestCircle.class, "getInputMethodRequests", null );
+      properties[PROPERTY_alignmentX] = new PropertyDescriptor ( "alignmentX", TestCircle.class, "getAlignmentX", null );
+      properties[PROPERTY_active] = new PropertyDescriptor ( "active", TestCircle.class, "isActive", null );
+      properties[PROPERTY_treeLock] = new PropertyDescriptor ( "treeLock", TestCircle.class, "getTreeLock", null );
+      properties[PROPERTY_dropTarget] = new PropertyDescriptor ( "dropTarget", TestCircle.class, "getDropTarget", "setDropTarget" );
+      properties[PROPERTY_appletContext] = new PropertyDescriptor ( "appletContext", TestCircle.class, "getAppletContext", null );
+      properties[PROPERTY_parent] = new PropertyDescriptor ( "parent", TestCircle.class, "getParent", null );
+      properties[PROPERTY_locale] = new PropertyDescriptor ( "locale", TestCircle.class, "getLocale", "setLocale" );
+      properties[PROPERTY_parameterInfo] = new PropertyDescriptor ( "parameterInfo", TestCircle.class, "getParameterInfo", null );
+      properties[PROPERTY_opaque] = new PropertyDescriptor ( "opaque", TestCircle.class, "isOpaque", null );
+      properties[PROPERTY_rootPane] = new PropertyDescriptor ( "rootPane", TestCircle.class, "getRootPane", null );
+      properties[PROPERTY_displayable] = new PropertyDescriptor ( "displayable", TestCircle.class, "isDisplayable", null );
+      properties[PROPERTY_insets] = new PropertyDescriptor ( "insets", TestCircle.class, "getInsets", null );
+      properties[PROPERTY_font] = new PropertyDescriptor ( "font", TestCircle.class, "getFont", "setFont" );
+      properties[PROPERTY_codeBase] = new PropertyDescriptor ( "codeBase", TestCircle.class, "getCodeBase", null );
+      properties[PROPERTY_JMenuBar] = new PropertyDescriptor ( "JMenuBar", TestCircle.class, "getJMenuBar", "setJMenuBar" );
+      properties[PROPERTY_doubleBuffered] = new PropertyDescriptor ( "doubleBuffered", TestCircle.class, "isDoubleBuffered", null );
+      properties[PROPERTY_bounds] = new PropertyDescriptor ( "bounds", TestCircle.class, "getBounds", "setBounds" );
+      properties[PROPERTY_y] = new PropertyDescriptor ( "y", TestCircle.class, "getY", null );
+      properties[PROPERTY_x] = new PropertyDescriptor ( "x", TestCircle.class, "getX", null );
+      properties[PROPERTY_peer] = new PropertyDescriptor ( "peer", TestCircle.class, "getPeer", null );
+      properties[PROPERTY_focusTraversable] = new PropertyDescriptor ( "focusTraversable", TestCircle.class, "isFocusTraversable", null );
+      properties[PROPERTY_component] = new IndexedPropertyDescriptor ( "component", TestCircle.class, null, null, "getComponent", null );
+    }
+    catch( IntrospectionException e) {}//GEN-HEADEREND:Properties
+
+    // Here you can add code for customizing the properties array.
+
+}//GEN-LAST:Properties
+
+  // EventSet identifiers//GEN-FIRST:Events
+  private static final int EVENT_mouseMotionListener = 0;
+  private static final int EVENT_inputMethodListener = 1;
+  private static final int EVENT_componentListener = 2;
+  private static final int EVENT_hierarchyBoundsListener = 3;
+  private static final int EVENT_focusListener = 4;
+  private static final int EVENT_mouseListener = 5;
+  private static final int EVENT_propertyChangeListener = 6;
+  private static final int EVENT_keyListener = 7;
+  private static final int EVENT_hierarchyListener = 8;
+  private static final int EVENT_containerListener = 9;
+
+  // EventSet array
+  private static EventSetDescriptor[] eventSets = new EventSetDescriptor[10];
+
+  static {
+    try {
+      eventSets[EVENT_mouseMotionListener] = new EventSetDescriptor ( beaninfodemo.TestCircle.class, "mouseMotionListener", java.awt.event.MouseMotionListener.class, new String[] {"mouseDragged", "mouseMoved"}, "addMouseMotionListener", "removeMouseMotionListener" );
+      eventSets[EVENT_inputMethodListener] = new EventSetDescriptor ( beaninfodemo.TestCircle.class, "inputMethodListener", java.awt.event.InputMethodListener.class, new String[] {"inputMethodTextChanged", "caretPositionChanged"}, "addInputMethodListener", "removeInputMethodListener" );
+      eventSets[EVENT_componentListener] = new EventSetDescriptor ( beaninfodemo.TestCircle.class, "componentListener", java.awt.event.ComponentListener.class, new String[] {"componentShown", "componentResized", "componentHidden", "componentMoved"}, "addComponentListener", "removeComponentListener" );
+      eventSets[EVENT_hierarchyBoundsListener] = new EventSetDescriptor ( beaninfodemo.TestCircle.class, "hierarchyBoundsListener", java.awt.event.HierarchyBoundsListener.class, new String[] {"ancestorResized", "ancestorMoved"}, "addHierarchyBoundsListener", "removeHierarchyBoundsListener" );
+      eventSets[EVENT_focusListener] = new EventSetDescriptor ( beaninfodemo.TestCircle.class, "focusListener", java.awt.event.FocusListener.class, new String[] {"focusGained", "focusLost"}, "addFocusListener", "removeFocusListener" );
+      eventSets[EVENT_mouseListener] = new EventSetDescriptor ( beaninfodemo.TestCircle.class, "mouseListener", java.awt.event.MouseListener.class, new String[] {"mouseReleased", "mouseEntered", "mouseClicked", "mousePressed", "mouseExited"}, "addMouseListener", "removeMouseListener" );
+      eventSets[EVENT_propertyChangeListener] = new EventSetDescriptor ( beaninfodemo.TestCircle.class, "propertyChangeListener", java.beans.PropertyChangeListener.class, new String[] {"propertyChange"}, "addPropertyChangeListener", "removePropertyChangeListener" );
+      eventSets[EVENT_keyListener] = new EventSetDescriptor ( beaninfodemo.TestCircle.class, "keyListener", java.awt.event.KeyListener.class, new String[] {"keyReleased", "keyPressed", "keyTyped"}, "addKeyListener", "removeKeyListener" );
+      eventSets[EVENT_hierarchyListener] = new EventSetDescriptor ( beaninfodemo.TestCircle.class, "hierarchyListener", java.awt.event.HierarchyListener.class, new String[] {"hierarchyChanged"}, "addHierarchyListener", "removeHierarchyListener" );
+      eventSets[EVENT_containerListener] = new EventSetDescriptor ( beaninfodemo.TestCircle.class, "containerListener", java.awt.event.ContainerListener.class, new String[] {"componentRemoved", "componentAdded"}, "addContainerListener", "removeContainerListener" );
+    }
+    catch( IntrospectionException e) {}//GEN-HEADEREND:Events
+
+    // Here you can add code for customizing the event sets array.
+
+}//GEN-LAST:Events
+
+  // Method identifiers //GEN-FIRST:Methods
+  private static final int METHOD_remove0 = 0;
+  private static final int METHOD_update1 = 1;
+  private static final int METHOD_destroy2 = 2;
+  private static final int METHOD_showStatus3 = 3;
+  private static final int METHOD_start4 = 4;
+  private static final int METHOD_resize5 = 5;
+  private static final int METHOD_play6 = 6;
+  private static final int METHOD_play7 = 7;
+  private static final int METHOD_newAudioClip8 = 8;
+  private static final int METHOD_getAudioClip9 = 9;
+  private static final int METHOD_stop10 = 10;
+  private static final int METHOD_resize11 = 11;
+  private static final int METHOD_getParameter12 = 12;
+  private static final int METHOD_getAudioClip13 = 13;
+  private static final int METHOD_getImage14 = 14;
+  private static final int METHOD_getImage15 = 15;
+  private static final int METHOD_init16 = 16;
+  private static final int METHOD_addNotify17 = 17;
+  private static final int METHOD_getComponentAt18 = 18;
+  private static final int METHOD_removeNotify19 = 19;
+  private static final int METHOD_add20 = 20;
+  private static final int METHOD_preferredSize21 = 21;
+  private static final int METHOD_locate22 = 22;
+  private static final int METHOD_list23 = 23;
+  private static final int METHOD_add24 = 24;
+  private static final int METHOD_add25 = 25;
+  private static final int METHOD_invalidate26 = 26;
+  private static final int METHOD_printComponents27 = 27;
+  private static final int METHOD_paint28 = 28;
+  private static final int METHOD_doLayout29 = 29;
+  private static final int METHOD_layout30 = 30;
+  private static final int METHOD_list31 = 31;
+  private static final int METHOD_add32 = 32;
+  private static final int METHOD_remove33 = 33;
+  private static final int METHOD_isAncestorOf34 = 34;
+  private static final int METHOD_findComponentAt35 = 35;
+  private static final int METHOD_findComponentAt36 = 36;
+  private static final int METHOD_insets37 = 37;
+  private static final int METHOD_getComponentAt38 = 38;
+  private static final int METHOD_paintComponents39 = 39;
+  private static final int METHOD_print40 = 40;
+  private static final int METHOD_getListeners41 = 41;
+  private static final int METHOD_countComponents42 = 42;
+  private static final int METHOD_minimumSize43 = 43;
+  private static final int METHOD_deliverEvent44 = 44;
+  private static final int METHOD_removeAll45 = 45;
+  private static final int METHOD_add46 = 46;
+  private static final int METHOD_validate47 = 47;
+  private static final int METHOD_gotFocus48 = 48;
+  private static final int METHOD_hasFocus49 = 49;
+  private static final int METHOD_toString50 = 50;
+  private static final int METHOD_list51 = 51;
+  private static final int METHOD_enableInputMethods52 = 52;
+  private static final int METHOD_mouseEnter53 = 53;
+  private static final int METHOD_requestFocus54 = 54;
+  private static final int METHOD_getSize55 = 55;
+  private static final int METHOD_add56 = 56;
+  private static final int METHOD_contains57 = 57;
+  private static final int METHOD_repaint58 = 58;
+  private static final int METHOD_transferFocus59 = 59;
+  private static final int METHOD_getBounds60 = 60;
+  private static final int METHOD_action61 = 61;
+  private static final int METHOD_setSize62 = 62;
+  private static final int METHOD_show63 = 63;
+  private static final int METHOD_mouseDown64 = 64;
+  private static final int METHOD_imageUpdate65 = 65;
+  private static final int METHOD_repaint66 = 66;
+  private static final int METHOD_getFontMetrics67 = 67;
+  private static final int METHOD_enable68 = 68;
+  private static final int METHOD_lostFocus69 = 69;
+  private static final int METHOD_postEvent70 = 70;
+  private static final int METHOD_show71 = 71;
+  private static final int METHOD_handleEvent72 = 72;
+  private static final int METHOD_getLocation73 = 73;
+  private static final int METHOD_list74 = 74;
+  private static final int METHOD_removePropertyChangeListener75 = 75;
+  private static final int METHOD_getSize76 = 76;
+  private static final int METHOD_addPropertyChangeListener77 = 77;
+  private static final int METHOD_setBounds78 = 78;
+  private static final int METHOD_mouseDrag79 = 79;
+  private static final int METHOD_printAll80 = 80;
+  private static final int METHOD_enable81 = 81;
+  private static final int METHOD_createImage82 = 82;
+  private static final int METHOD_keyUp83 = 83;
+  private static final int METHOD_createImage84 = 84;
+  private static final int METHOD_setLocation85 = 85;
+  private static final int METHOD_repaint86 = 86;
+  private static final int METHOD_repaint87 = 87;
+  private static final int METHOD_keyDown88 = 88;
+  private static final int METHOD_nextFocus89 = 89;
+  private static final int METHOD_bounds90 = 90;
+  private static final int METHOD_move91 = 91;
+  private static final int METHOD_prepareImage92 = 92;
+  private static final int METHOD_prepareImage93 = 93;
+  private static final int METHOD_getLocation94 = 94;
+  private static final int METHOD_remove95 = 95;
+  private static final int METHOD_setSize96 = 96;
+  private static final int METHOD_hide97 = 97;
+  private static final int METHOD_list98 = 98;
+  private static final int METHOD_location99 = 99;
+  private static final int METHOD_paintAll100 = 100;
+  private static final int METHOD_dispatchEvent101 = 101;
+  private static final int METHOD_checkImage102 = 102;
+  private static final int METHOD_checkImage103 = 103;
+  private static final int METHOD_mouseExit104 = 104;
+  private static final int METHOD_mouseMove105 = 105;
+  private static final int METHOD_setLocation106 = 106;
+  private static final int METHOD_mouseUp107 = 107;
+  private static final int METHOD_size108 = 108;
+  private static final int METHOD_inside109 = 109;
+  private static final int METHOD_contains110 = 110;
+  private static final int METHOD_disable111 = 111;
+  private static final int METHOD_reshape112 = 112;
+
+  // Method array 
+  private static MethodDescriptor[] methods = new MethodDescriptor[113];
+
+  static {
+    try {
+      methods[METHOD_remove0] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("remove", new Class[] {java.awt.Component.class}));
+      methods[METHOD_remove0].setDisplayName ( "" );
+      methods[METHOD_update1] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("update", new Class[] {java.awt.Graphics.class}));
+      methods[METHOD_update1].setDisplayName ( "" );
+      methods[METHOD_destroy2] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("destroy", new Class[] {}));
+      methods[METHOD_destroy2].setDisplayName ( "" );
+      methods[METHOD_showStatus3] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("showStatus", new Class[] {java.lang.String.class}));
+      methods[METHOD_showStatus3].setDisplayName ( "" );
+      methods[METHOD_start4] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("start", new Class[] {}));
+      methods[METHOD_start4].setDisplayName ( "" );
+      methods[METHOD_resize5] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("resize", new Class[] {Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_resize5].setDisplayName ( "" );
+      methods[METHOD_play6] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("play", new Class[] {java.net.URL.class}));
+      methods[METHOD_play6].setDisplayName ( "" );
+      methods[METHOD_play7] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("play", new Class[] {java.net.URL.class, java.lang.String.class}));
+      methods[METHOD_play7].setDisplayName ( "" );
+      methods[METHOD_newAudioClip8] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("newAudioClip", new Class[] {java.net.URL.class}));
+      methods[METHOD_newAudioClip8].setDisplayName ( "" );
+      methods[METHOD_getAudioClip9] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getAudioClip", new Class[] {java.net.URL.class}));
+      methods[METHOD_getAudioClip9].setDisplayName ( "" );
+      methods[METHOD_stop10] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("stop", new Class[] {}));
+      methods[METHOD_stop10].setDisplayName ( "" );
+      methods[METHOD_resize11] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("resize", new Class[] {java.awt.Dimension.class}));
+      methods[METHOD_resize11].setDisplayName ( "" );
+      methods[METHOD_getParameter12] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getParameter", new Class[] {java.lang.String.class}));
+      methods[METHOD_getParameter12].setDisplayName ( "" );
+      methods[METHOD_getAudioClip13] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getAudioClip", new Class[] {java.net.URL.class, java.lang.String.class}));
+      methods[METHOD_getAudioClip13].setDisplayName ( "" );
+      methods[METHOD_getImage14] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getImage", new Class[] {java.net.URL.class}));
+      methods[METHOD_getImage14].setDisplayName ( "" );
+      methods[METHOD_getImage15] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getImage", new Class[] {java.net.URL.class, java.lang.String.class}));
+      methods[METHOD_getImage15].setDisplayName ( "" );
+      methods[METHOD_init16] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("init", new Class[] {}));
+      methods[METHOD_init16].setDisplayName ( "" );
+      methods[METHOD_addNotify17] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("addNotify", new Class[] {}));
+      methods[METHOD_addNotify17].setDisplayName ( "" );
+      methods[METHOD_getComponentAt18] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getComponentAt", new Class[] {java.awt.Point.class}));
+      methods[METHOD_getComponentAt18].setDisplayName ( "" );
+      methods[METHOD_removeNotify19] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("removeNotify", new Class[] {}));
+      methods[METHOD_removeNotify19].setDisplayName ( "" );
+      methods[METHOD_add20] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("add", new Class[] {java.awt.Component.class}));
+      methods[METHOD_add20].setDisplayName ( "" );
+      methods[METHOD_preferredSize21] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("preferredSize", new Class[] {}));
+      methods[METHOD_preferredSize21].setDisplayName ( "" );
+      methods[METHOD_locate22] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("locate", new Class[] {Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_locate22].setDisplayName ( "" );
+      methods[METHOD_list23] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("list", new Class[] {java.io.PrintWriter.class, Integer.TYPE}));
+      methods[METHOD_list23].setDisplayName ( "" );
+      methods[METHOD_add24] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("add", new Class[] {java.awt.Component.class, Integer.TYPE}));
+      methods[METHOD_add24].setDisplayName ( "" );
+      methods[METHOD_add25] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("add", new Class[] {java.awt.Component.class, java.lang.Object.class, Integer.TYPE}));
+      methods[METHOD_add25].setDisplayName ( "" );
+      methods[METHOD_invalidate26] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("invalidate", new Class[] {}));
+      methods[METHOD_invalidate26].setDisplayName ( "" );
+      methods[METHOD_printComponents27] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("printComponents", new Class[] {java.awt.Graphics.class}));
+      methods[METHOD_printComponents27].setDisplayName ( "" );
+      methods[METHOD_paint28] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("paint", new Class[] {java.awt.Graphics.class}));
+      methods[METHOD_paint28].setDisplayName ( "" );
+      methods[METHOD_doLayout29] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("doLayout", new Class[] {}));
+      methods[METHOD_doLayout29].setDisplayName ( "" );
+      methods[METHOD_layout30] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("layout", new Class[] {}));
+      methods[METHOD_layout30].setDisplayName ( "" );
+      methods[METHOD_list31] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("list", new Class[] {java.io.PrintStream.class, Integer.TYPE}));
+      methods[METHOD_list31].setDisplayName ( "" );
+      methods[METHOD_add32] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("add", new Class[] {java.lang.String.class, java.awt.Component.class}));
+      methods[METHOD_add32].setDisplayName ( "" );
+      methods[METHOD_remove33] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("remove", new Class[] {Integer.TYPE}));
+      methods[METHOD_remove33].setDisplayName ( "" );
+      methods[METHOD_isAncestorOf34] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("isAncestorOf", new Class[] {java.awt.Component.class}));
+      methods[METHOD_isAncestorOf34].setDisplayName ( "" );
+      methods[METHOD_findComponentAt35] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("findComponentAt", new Class[] {Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_findComponentAt35].setDisplayName ( "" );
+      methods[METHOD_findComponentAt36] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("findComponentAt", new Class[] {java.awt.Point.class}));
+      methods[METHOD_findComponentAt36].setDisplayName ( "" );
+      methods[METHOD_insets37] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("insets", new Class[] {}));
+      methods[METHOD_insets37].setDisplayName ( "" );
+      methods[METHOD_getComponentAt38] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getComponentAt", new Class[] {Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_getComponentAt38].setDisplayName ( "" );
+      methods[METHOD_paintComponents39] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("paintComponents", new Class[] {java.awt.Graphics.class}));
+      methods[METHOD_paintComponents39].setDisplayName ( "" );
+      methods[METHOD_print40] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("print", new Class[] {java.awt.Graphics.class}));
+      methods[METHOD_print40].setDisplayName ( "" );
+      methods[METHOD_getListeners41] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getListeners", new Class[] {java.lang.Class.class}));
+      methods[METHOD_getListeners41].setDisplayName ( "" );
+      methods[METHOD_countComponents42] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("countComponents", new Class[] {}));
+      methods[METHOD_countComponents42].setDisplayName ( "" );
+      methods[METHOD_minimumSize43] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("minimumSize", new Class[] {}));
+      methods[METHOD_minimumSize43].setDisplayName ( "" );
+      methods[METHOD_deliverEvent44] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("deliverEvent", new Class[] {java.awt.Event.class}));
+      methods[METHOD_deliverEvent44].setDisplayName ( "" );
+      methods[METHOD_removeAll45] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("removeAll", new Class[] {}));
+      methods[METHOD_removeAll45].setDisplayName ( "" );
+      methods[METHOD_add46] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("add", new Class[] {java.awt.Component.class, java.lang.Object.class}));
+      methods[METHOD_add46].setDisplayName ( "" );
+      methods[METHOD_validate47] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("validate", new Class[] {}));
+      methods[METHOD_validate47].setDisplayName ( "" );
+      methods[METHOD_gotFocus48] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("gotFocus", new Class[] {java.awt.Event.class, java.lang.Object.class}));
+      methods[METHOD_gotFocus48].setDisplayName ( "" );
+      methods[METHOD_hasFocus49] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("hasFocus", new Class[] {}));
+      methods[METHOD_hasFocus49].setDisplayName ( "" );
+      methods[METHOD_toString50] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("toString", new Class[] {}));
+      methods[METHOD_toString50].setDisplayName ( "" );
+      methods[METHOD_list51] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("list", new Class[] {java.io.PrintStream.class}));
+      methods[METHOD_list51].setDisplayName ( "" );
+      methods[METHOD_enableInputMethods52] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("enableInputMethods", new Class[] {Boolean.TYPE}));
+      methods[METHOD_enableInputMethods52].setDisplayName ( "" );
+      methods[METHOD_mouseEnter53] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("mouseEnter", new Class[] {java.awt.Event.class, Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_mouseEnter53].setDisplayName ( "" );
+      methods[METHOD_requestFocus54] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("requestFocus", new Class[] {}));
+      methods[METHOD_requestFocus54].setDisplayName ( "" );
+      methods[METHOD_getSize55] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getSize", new Class[] {}));
+      methods[METHOD_getSize55].setDisplayName ( "" );
+      methods[METHOD_add56] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("add", new Class[] {java.awt.PopupMenu.class}));
+      methods[METHOD_add56].setDisplayName ( "" );
+      methods[METHOD_contains57] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("contains", new Class[] {java.awt.Point.class}));
+      methods[METHOD_contains57].setDisplayName ( "" );
+      methods[METHOD_repaint58] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("repaint", new Class[] {Long.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_repaint58].setDisplayName ( "" );
+      methods[METHOD_transferFocus59] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("transferFocus", new Class[] {}));
+      methods[METHOD_transferFocus59].setDisplayName ( "" );
+      methods[METHOD_getBounds60] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getBounds", new Class[] {java.awt.Rectangle.class}));
+      methods[METHOD_getBounds60].setDisplayName ( "" );
+      methods[METHOD_action61] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("action", new Class[] {java.awt.Event.class, java.lang.Object.class}));
+      methods[METHOD_action61].setDisplayName ( "" );
+      methods[METHOD_setSize62] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("setSize", new Class[] {Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_setSize62].setDisplayName ( "" );
+      methods[METHOD_show63] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("show", new Class[] {}));
+      methods[METHOD_show63].setDisplayName ( "" );
+      methods[METHOD_mouseDown64] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("mouseDown", new Class[] {java.awt.Event.class, Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_mouseDown64].setDisplayName ( "" );
+      methods[METHOD_imageUpdate65] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("imageUpdate", new Class[] {java.awt.Image.class, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_imageUpdate65].setDisplayName ( "" );
+      methods[METHOD_repaint66] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("repaint", new Class[] {Long.TYPE}));
+      methods[METHOD_repaint66].setDisplayName ( "" );
+      methods[METHOD_getFontMetrics67] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getFontMetrics", new Class[] {java.awt.Font.class}));
+      methods[METHOD_getFontMetrics67].setDisplayName ( "" );
+      methods[METHOD_enable68] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("enable", new Class[] {}));
+      methods[METHOD_enable68].setDisplayName ( "" );
+      methods[METHOD_lostFocus69] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("lostFocus", new Class[] {java.awt.Event.class, java.lang.Object.class}));
+      methods[METHOD_lostFocus69].setDisplayName ( "" );
+      methods[METHOD_postEvent70] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("postEvent", new Class[] {java.awt.Event.class}));
+      methods[METHOD_postEvent70].setDisplayName ( "" );
+      methods[METHOD_show71] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("show", new Class[] {Boolean.TYPE}));
+      methods[METHOD_show71].setDisplayName ( "" );
+      methods[METHOD_handleEvent72] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("handleEvent", new Class[] {java.awt.Event.class}));
+      methods[METHOD_handleEvent72].setDisplayName ( "" );
+      methods[METHOD_getLocation73] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getLocation", new Class[] {java.awt.Point.class}));
+      methods[METHOD_getLocation73].setDisplayName ( "" );
+      methods[METHOD_list74] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("list", new Class[] {java.io.PrintWriter.class}));
+      methods[METHOD_list74].setDisplayName ( "" );
+      methods[METHOD_removePropertyChangeListener75] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("removePropertyChangeListener", new Class[] {java.lang.String.class, java.beans.PropertyChangeListener.class}));
+      methods[METHOD_removePropertyChangeListener75].setDisplayName ( "" );
+      methods[METHOD_getSize76] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getSize", new Class[] {java.awt.Dimension.class}));
+      methods[METHOD_getSize76].setDisplayName ( "" );
+      methods[METHOD_addPropertyChangeListener77] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("addPropertyChangeListener", new Class[] {java.lang.String.class, java.beans.PropertyChangeListener.class}));
+      methods[METHOD_addPropertyChangeListener77].setDisplayName ( "" );
+      methods[METHOD_setBounds78] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("setBounds", new Class[] {Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_setBounds78].setDisplayName ( "" );
+      methods[METHOD_mouseDrag79] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("mouseDrag", new Class[] {java.awt.Event.class, Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_mouseDrag79].setDisplayName ( "" );
+      methods[METHOD_printAll80] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("printAll", new Class[] {java.awt.Graphics.class}));
+      methods[METHOD_printAll80].setDisplayName ( "" );
+      methods[METHOD_enable81] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("enable", new Class[] {Boolean.TYPE}));
+      methods[METHOD_enable81].setDisplayName ( "" );
+      methods[METHOD_createImage82] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("createImage", new Class[] {java.awt.image.ImageProducer.class}));
+      methods[METHOD_createImage82].setDisplayName ( "" );
+      methods[METHOD_keyUp83] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("keyUp", new Class[] {java.awt.Event.class, Integer.TYPE}));
+      methods[METHOD_keyUp83].setDisplayName ( "" );
+      methods[METHOD_createImage84] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("createImage", new Class[] {Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_createImage84].setDisplayName ( "" );
+      methods[METHOD_setLocation85] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("setLocation", new Class[] {Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_setLocation85].setDisplayName ( "" );
+      methods[METHOD_repaint86] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("repaint", new Class[] {Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_repaint86].setDisplayName ( "" );
+      methods[METHOD_repaint87] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("repaint", new Class[] {}));
+      methods[METHOD_repaint87].setDisplayName ( "" );
+      methods[METHOD_keyDown88] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("keyDown", new Class[] {java.awt.Event.class, Integer.TYPE}));
+      methods[METHOD_keyDown88].setDisplayName ( "" );
+      methods[METHOD_nextFocus89] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("nextFocus", new Class[] {}));
+      methods[METHOD_nextFocus89].setDisplayName ( "" );
+      methods[METHOD_bounds90] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("bounds", new Class[] {}));
+      methods[METHOD_bounds90].setDisplayName ( "" );
+      methods[METHOD_move91] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("move", new Class[] {Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_move91].setDisplayName ( "" );
+      methods[METHOD_prepareImage92] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("prepareImage", new Class[] {java.awt.Image.class, Integer.TYPE, Integer.TYPE, java.awt.image.ImageObserver.class}));
+      methods[METHOD_prepareImage92].setDisplayName ( "" );
+      methods[METHOD_prepareImage93] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("prepareImage", new Class[] {java.awt.Image.class, java.awt.image.ImageObserver.class}));
+      methods[METHOD_prepareImage93].setDisplayName ( "" );
+      methods[METHOD_getLocation94] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("getLocation", new Class[] {}));
+      methods[METHOD_getLocation94].setDisplayName ( "" );
+      methods[METHOD_remove95] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("remove", new Class[] {java.awt.MenuComponent.class}));
+      methods[METHOD_remove95].setDisplayName ( "" );
+      methods[METHOD_setSize96] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("setSize", new Class[] {java.awt.Dimension.class}));
+      methods[METHOD_setSize96].setDisplayName ( "" );
+      methods[METHOD_hide97] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("hide", new Class[] {}));
+      methods[METHOD_hide97].setDisplayName ( "" );
+      methods[METHOD_list98] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("list", new Class[] {}));
+      methods[METHOD_list98].setDisplayName ( "" );
+      methods[METHOD_location99] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("location", new Class[] {}));
+      methods[METHOD_location99].setDisplayName ( "" );
+      methods[METHOD_paintAll100] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("paintAll", new Class[] {java.awt.Graphics.class}));
+      methods[METHOD_paintAll100].setDisplayName ( "" );
+      methods[METHOD_dispatchEvent101] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("dispatchEvent", new Class[] {java.awt.AWTEvent.class}));
+      methods[METHOD_dispatchEvent101].setDisplayName ( "" );
+      methods[METHOD_checkImage102] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("checkImage", new Class[] {java.awt.Image.class, java.awt.image.ImageObserver.class}));
+      methods[METHOD_checkImage102].setDisplayName ( "" );
+      methods[METHOD_checkImage103] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("checkImage", new Class[] {java.awt.Image.class, Integer.TYPE, Integer.TYPE, java.awt.image.ImageObserver.class}));
+      methods[METHOD_checkImage103].setDisplayName ( "" );
+      methods[METHOD_mouseExit104] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("mouseExit", new Class[] {java.awt.Event.class, Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_mouseExit104].setDisplayName ( "" );
+      methods[METHOD_mouseMove105] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("mouseMove", new Class[] {java.awt.Event.class, Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_mouseMove105].setDisplayName ( "" );
+      methods[METHOD_setLocation106] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("setLocation", new Class[] {java.awt.Point.class}));
+      methods[METHOD_setLocation106].setDisplayName ( "" );
+      methods[METHOD_mouseUp107] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("mouseUp", new Class[] {java.awt.Event.class, Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_mouseUp107].setDisplayName ( "" );
+      methods[METHOD_size108] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("size", new Class[] {}));
+      methods[METHOD_size108].setDisplayName ( "" );
+      methods[METHOD_inside109] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("inside", new Class[] {Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_inside109].setDisplayName ( "" );
+      methods[METHOD_contains110] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("contains", new Class[] {Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_contains110].setDisplayName ( "" );
+      methods[METHOD_disable111] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("disable", new Class[] {}));
+      methods[METHOD_disable111].setDisplayName ( "" );
+      methods[METHOD_reshape112] = new MethodDescriptor ( beaninfodemo.TestCircle.class.getMethod("reshape", new Class[] {Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE}));
+      methods[METHOD_reshape112].setDisplayName ( "" );
+    }
+    catch( Exception e) {}//GEN-HEADEREND:Methods
+
+    // Here you can add code for customizing the methods array.
+    
+}//GEN-LAST:Methods
+
+  private static final int defaultPropertyIndex = -1;//GEN-BEGIN:Idx
+  private static final int defaultEventIndex = -1;//GEN-END:Idx
+
+
+    /**
+     * Gets the bean's <code>BeanDescriptor</code>s.
+     * 
+     * @return BeanDescriptor describing the editable
+     * properties of this bean.  May return null if the
+     * information should be obtained by automatic analysis.
+     */
+    public BeanDescriptor getBeanDescriptor() {
+	return beanDescriptor;
+    }
+
+    /**
+     * Gets the bean's <code>PropertyDescriptor</code>s.
+     * 
+     * @return An array of PropertyDescriptors describing the editable
+     * properties supported by this bean.  May return null if the
+     * information should be obtained by automatic analysis.
+     * <p>
+     * If a property is indexed, then its entry in the result array will
+     * belong to the IndexedPropertyDescriptor subclass of PropertyDescriptor.
+     * A client of getPropertyDescriptors can use "instanceof" to check
+     * if a given PropertyDescriptor is an IndexedPropertyDescriptor.
+     */
+    public PropertyDescriptor[] getPropertyDescriptors() {
+        return properties;
+    }
+
+    /**
+     * Gets the bean's <code>EventSetDescriptor</code>s.
+     * 
+     * @return  An array of EventSetDescriptors describing the kinds of 
+     * events fired by this bean.  May return null if the information
+     * should be obtained by automatic analysis.
+     */
+    public EventSetDescriptor[] getEventSetDescriptors() {
+        return eventSets;
+    }
+
+    /**
+     * Gets the bean's <code>MethodDescriptor</code>s.
+     * 
+     * @return  An array of MethodDescriptors describing the methods 
+     * implemented by this bean.  May return null if the information
+     * should be obtained by automatic analysis.
+     */
+    public MethodDescriptor[] getMethodDescriptors() {
+        return methods;
+    }
+
+    /**
+     * A bean may have a "default" property that is the property that will
+     * mostly commonly be initially chosen for update by human's who are 
+     * customizing the bean.
+     * @return  Index of default property in the PropertyDescriptor array
+     * 		returned by getPropertyDescriptors.
+     * <P>	Returns -1 if there is no default property.
+     */
+    public int getDefaultPropertyIndex() {
+        return defaultPropertyIndex;
+    }
+
+    /**
+     * A bean may have a "default" event that is the event that will
+     * mostly commonly be used by human's when using the bean. 
+     * @return Index of default event in the EventSetDescriptor array
+     *		returned by getEventSetDescriptors.
+     * <P>	Returns -1 if there is no default event.
+     */
+    public int getDefaultEventIndex() {
+        return defaultEventIndex;
+    }
+}
+

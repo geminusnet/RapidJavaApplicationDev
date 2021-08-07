@@ -1,0 +1,9 @@
+[PropertyInfo]
+color,java.awt.Color,false,false,color,color,true,<default>
+filled,boolean,false,false,filled,filled,true,<default>
+radius,double,false,false,radius,radius,true,<default>
+[IconNames]
+
+
+
+

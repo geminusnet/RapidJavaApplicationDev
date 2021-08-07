@@ -1,0 +1,9 @@
+[PropertyInfo]
+title,String,false,false,title,title,true,<default>
+description,String,false,false,description,description,true,<default>
+imageIcon,javax.swing.ImageIcon,false,false,imageIcon,imageIcon,true,<default>
+[IconNames]
+
+
+
+

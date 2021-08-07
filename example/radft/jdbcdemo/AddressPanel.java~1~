@@ -1,0 +1,235 @@
+package jdbcdemo;
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import java.awt.event.*;
+import java.sql.*;
+
+public class AddressPanel extends JPanel {
+  BorderLayout borderLayout1 = new BorderLayout();
+  JPanel jpAddress = new JPanel();
+  JPanel jpButtons = new JPanel();
+  GridLayout gridLayout1 = new GridLayout();
+  JPanel jPanel3 = new JPanel();
+  JPanel jPanel4 = new JPanel();
+  JPanel jPanel5 = new JPanel();
+  JPanel jPanel6 = new JPanel();
+  JPanel jPanel7 = new JPanel();
+  JLabel jLabel1 = new JLabel();
+  protected JTextField jtfFirstName = new JTextField();
+  JLabel jLabel2 = new JLabel();
+  protected JTextField jtfmi = new JTextField();
+  JLabel jLabel3 = new JLabel();
+  protected JTextField jtfLastName = new JTextField();
+  FlowLayout flowLayout1 = new FlowLayout();
+  TitledBorder titledBorder1;
+  JLabel jLabel4 = new JLabel();
+  protected JTextField jtfStreet = new JTextField();
+  FlowLayout flowLayout2 = new FlowLayout();
+  JLabel jLabel5 = new JLabel();
+  protected JTextField jtfCity = new JTextField();
+  JLabel jLabel6 = new JLabel();
+  protected JTextField jtfState = new JTextField();
+  JLabel jLabel7 = new JLabel();
+  protected JTextField jtfZip = new JTextField();
+  FlowLayout flowLayout3 = new FlowLayout();
+  JLabel jLabel8 = new JLabel();
+  protected JTextField jtfTelephone = new JTextField();
+  FlowLayout flowLayout4 = new FlowLayout();
+  FlowLayout flowLayout5 = new FlowLayout();
+  JLabel jLabel9 = new JLabel();
+  protected JTextField jtfEmail = new JTextField();
+  JButton jbtSearch = new JButton();
+  JButton jbtInset = new JButton();
+  JButton jbtClear = new JButton();
+  protected JLabel jlblStatus = new JLabel();
+
+  // Database connection passed from DBConnectDialog
+  Connection connection;
+
+  /**Default constructor*/
+  public AddressPanel() {
+    try {
+      jbInit();
+    }
+    catch(Exception ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  /**Construct an AddressPanel with a specified connection*/
+  public AddressPanel(Connection connection) {
+    this();
+    this.connection = connection;
+    jlblStatus.setText("Using static SQL statements");
+  }
+
+  private void jbInit() throws Exception {
+    titledBorder1 = new TitledBorder("");
+    this.setLayout(borderLayout1);
+    jpAddress.setLayout(gridLayout1);
+    gridLayout1.setRows(5);
+    jLabel1.setText("First Name");
+    jtfFirstName.setBackground(Color.yellow);
+    jtfFirstName.setColumns(12);
+    jLabel2.setText("mi");
+    jtfmi.setColumns(2);
+    jLabel3.setText("Last Name");
+    jtfLastName.setBackground(Color.yellow);
+    jtfLastName.setColumns(12);
+    jPanel3.setLayout(flowLayout1);
+    flowLayout1.setAlignment(FlowLayout.LEFT);
+    jLabel4.setText("Street");
+    jtfStreet.setColumns(25);
+    jPanel4.setLayout(flowLayout2);
+    flowLayout2.setAlignment(FlowLayout.LEFT);
+    jLabel5.setText("City");
+    jtfCity.setColumns(15);
+    jLabel6.setText("State");
+    jtfState.setColumns(3);
+    jLabel7.setText("zip");
+    jtfZip.setColumns(5);
+    jPanel5.setLayout(flowLayout3);
+    flowLayout3.setAlignment(FlowLayout.LEFT);
+    jLabel8.setText("Telephone");
+    jtfTelephone.setColumns(12);
+    jPanel6.setLayout(flowLayout4);
+    flowLayout4.setAlignment(FlowLayout.LEFT);
+    jPanel7.setLayout(flowLayout5);
+    flowLayout5.setAlignment(FlowLayout.LEFT);
+    jLabel9.setText("Email");
+    jtfEmail.setColumns(12);
+    jbtSearch.setText("Search");
+    jbtSearch.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtSearch_actionPerformed(e);
+      }
+    });
+    jbtInset.setText("Insert");
+    jbtInset.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtInset_actionPerformed(e);
+      }
+    });
+    jbtClear.setText("Clear");
+    jbtClear.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtClear_actionPerformed(e);
+      }
+    });
+    titledBorder1.setTitle("Address");
+    jpAddress.setBorder(titledBorder1);
+    jlblStatus.setText("jLabel10");
+    this.add(jpAddress, BorderLayout.CENTER);
+    jpAddress.add(jPanel3, null);
+    jPanel3.add(jLabel1, null);
+    jPanel3.add(jtfFirstName, null);
+    jPanel3.add(jLabel2, null);
+    jPanel3.add(jtfmi, null);
+    jPanel3.add(jLabel3, null);
+    jPanel3.add(jtfLastName, null);
+    jpAddress.add(jPanel4, null);
+    jPanel4.add(jLabel4, null);
+    jPanel4.add(jtfStreet, null);
+    jpAddress.add(jPanel5, null);
+    jPanel5.add(jLabel5, null);
+    jPanel5.add(jtfCity, null);
+    jPanel5.add(jLabel6, null);
+    jPanel5.add(jtfState, null);
+    jPanel5.add(jLabel7, null);
+    jPanel5.add(jtfZip, null);
+    jpAddress.add(jPanel6, null);
+    jPanel6.add(jLabel8, null);
+    jPanel6.add(jtfTelephone, null);
+    jpAddress.add(jPanel7, null);
+    jPanel7.add(jLabel9, null);
+    jPanel7.add(jtfEmail, null);
+    this.add(jpButtons, BorderLayout.NORTH);
+    jpButtons.add(jbtSearch, null);
+    jpButtons.add(jbtInset, null);
+    jpButtons.add(jbtClear, null);
+    this.add(jlblStatus, BorderLayout.SOUTH);
+  }
+
+  public void setConnection(java.sql.Connection newConnection) {
+    connection = newConnection;
+  }
+
+  void jbtSearch_actionPerformed(ActionEvent e) {
+    select();
+  }
+
+  void jbtInset_actionPerformed(ActionEvent e) {
+    insert();
+  }
+
+  void jbtClear_actionPerformed(ActionEvent e) {
+    clear();
+  }
+
+  protected void select() {
+    String query = "select * from Address where " +
+      "firstName = " +
+      "'" + jtfFirstName.getText().trim() + "'" +
+      " and lastName = " +
+      "'" + jtfLastName.getText().trim() + "'";
+
+    try {
+      Statement stmt = connection.createStatement();
+      ResultSet rs = stmt.executeQuery(query);
+
+      if (rs.next()) {
+        jtfmi.setText(rs.getString(2));
+        jtfStreet.setText(rs.getString(4));
+        jtfCity.setText(rs.getString(5));
+        jtfState.setText(rs.getString(6));
+        jtfZip.setText(rs.getString(7));
+        jtfTelephone.setText(rs.getString(8));
+        jtfEmail.setText(rs.getString(9));
+
+        jlblStatus.setText("Record found");
+      }
+      else {
+        jlblStatus.setText("Record not found");
+      }
+    }
+    catch (SQLException ex) {
+      jlblStatus.setText(ex.getMessage());
+    }
+  }
+
+  protected void insert() {
+    String sqlInsert = "insert into Address values (" +
+      "'" + jtfFirstName.getText().trim() + "'" + "," +
+      "'" + jtfmi.getText().trim() + "'" + "," +
+      "'" + jtfLastName.getText().trim() + "'" + "," +
+      "'" + jtfStreet.getText().trim() + "'" + "," +
+      "'" + jtfCity.getText().trim() + "'" + "," +
+      "'" + jtfState.getText().trim() + "'" + "," +
+      "'" + jtfZip.getText().trim() + "'" + "," +
+      "'" + jtfTelephone.getText().trim() + "'" + "," +
+      "'" + jtfEmail.getText().trim()+ "'" + ")";
+
+    try {
+      Statement stmt = connection.createStatement();
+      int t = stmt.executeUpdate(sqlInsert);
+      jlblStatus.setText("Insertion succeeded");
+    }
+    catch (SQLException ex) {
+      jlblStatus.setText(ex.getMessage());
+    }
+  }
+
+  protected void clear() {
+    jtfFirstName.setText(null);
+    jtfmi.setText(null);
+    jtfLastName.setText(null);
+    jtfStreet.setText(null);
+    jtfCity.setText(null);
+    jtfState.setText(null);
+    jtfZip.setText(null);
+    jtfTelephone.setText(null);
+    jtfEmail.setText(null);
+  }
+}

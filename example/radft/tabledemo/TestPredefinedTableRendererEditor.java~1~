@@ -1,0 +1,133 @@
+package tabledemo;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+import javax.swing.*;
+import java.util.*;
+import imageviewerdemo.ImageViewer;
+
+public class TestPredefinedTableRendererEditor extends JApplet {
+  boolean isStandalone = false;
+  JScrollPane jScrollPane1 = new JScrollPane();
+  JTable jTable1 = new JTable();
+
+  // Create table column names
+  String[] columnNames =
+    {"Title", "Author", "Publisher", "Date Published", "In-stock",
+      "Book Photo"};
+
+  /**Initialize the applet*/
+  public void init() {
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**Component initialization*/
+  private void jbInit() throws Exception {
+
+    // Create images
+    ImageIcon intro1eImageIcon = ImageViewer.createImageIcon(
+      "../image/intro1e.gif", this);
+    ImageIcon intro2eImageIcon = ImageViewer.createImageIcon(
+      "../image/intro2e.gif", this);
+    ImageIcon intro3eImageIcon = ImageViewer.createImageIcon(
+      "../image/intro3e.jpg", this);
+    ImageIcon introjb3ImageIcon = ImageViewer.createImageIcon(
+      "../image/introjb3.jpg", this);
+    ImageIcon introvj6ImageIcon = ImageViewer.createImageIcon(
+      "../image/introvj6.jpg", this);
+    ImageIcon introjb4ImageIcon = ImageViewer.createImageIcon(
+      "../image/introjb4.jpg", this);
+    ImageIcon radjb3ImageIcon = ImageViewer.createImageIcon(
+      "../image/radjb3.jpg", this);
+    ImageIcon radjb5ImageIcon = ImageViewer.createImageIcon(
+      "../image/radjb5.gif", this);
+
+    // Create table data
+    Object[][] data = {
+      {"Introduction to Java Programming", "Y. Daniel Liang",
+       "Que Eduction & Training",
+        new GregorianCalendar(1998, 1-1, 6).getTime(),
+        new Boolean(false), intro1eImageIcon},
+      {"Introduction to Java Programming, Second Edition",
+       "Y. Daniel Liang",
+        "Que Eduction & Training",
+        new GregorianCalendar(1999, 1-1, 6).getTime(),
+        new Boolean(true), intro2eImageIcon},
+      {"Introduction to Java Programming, Thrid Edition",
+        "Y. Daniel Liang", "Prentice Hall",
+        new GregorianCalendar(2000, 1-1, 6).getTime(),
+        new Boolean(true), intro3eImageIcon},
+      {"Introduction to Java Programming With Visual J++ 6",
+        "Y. Daniel Liang", "Prentice Hall",
+        new GregorianCalendar(2000, 1-1, 6).getTime(),
+        new Boolean(true), introvj6ImageIcon},
+      {"Introduction to Java Programming with JBuilder 3",
+        "Y. Daniel Liang", "Prentice Hall",
+        new GregorianCalendar(2000, 1-1, 6).getTime(),
+        new Boolean(true), introjb3ImageIcon},
+      {"Rapid Java Application Development Using JBuilder 3",
+        "Y. Daniel Liang", "Prentice Hall",
+        new GregorianCalendar(2000, 1-1, 6).getTime(),
+        new Boolean(true), radjb3ImageIcon},
+      {" Introduction to Java Programming with JBuilder 4",
+        "Y. Daniel Liang", "Prentice Hall",
+        new GregorianCalendar(2001, 7-1, 22).getTime(),
+        new Boolean(true), introjb4ImageIcon},
+      {"Rapid Java Application Development Using JBuilder 4 and 5",
+        "Y. Daniel Liang", "Prentice Hall",
+        new GregorianCalendar(2001, 12-1, 16).getTime(),
+        new Boolean(true), radjb5ImageIcon},
+    };
+
+    // Create table model
+    MyTableModel tableModel = new MyTableModel(data, columnNames);
+
+
+    this.setSize(new Dimension(400,300));
+    jTable1.setModel(tableModel);
+    jTable1.setRowHeight(40);
+    this.getContentPane().add(jScrollPane1, BorderLayout.CENTER);
+    jScrollPane1.getViewport().add(jTable1, null);
+  }
+
+  /**Get Applet information*/
+  public String getAppletInfo() {
+    return "Applet Information";
+  }
+  /**Get parameter info*/
+  public String[][] getParameterInfo() {
+    return null;
+  }
+  /**Main method*/
+  public static void main(String[] args) {
+    TestPredefinedTableRendererEditor applet = new TestPredefinedTableRendererEditor();
+    applet.isStandalone = true;
+    JFrame frame = new JFrame();
+    //EXIT_ON_CLOSE == 3
+    frame.setDefaultCloseOperation(3);
+    frame.setTitle("TestPredefinedTableRendererEditor");
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(400,320);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / 2, (d.height - frame.getSize().height) / 2);
+    frame.setVisible(true);
+  }
+
+  //static initializer for setting look & feel
+  static {
+    try {
+      //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      //UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+    }
+    catch(Exception e) {
+    }
+  }
+}

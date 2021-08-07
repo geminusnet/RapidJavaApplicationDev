@@ -1,0 +1,426 @@
+package jdbcdemo;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+import javax.swing.*;
+import java.sql.*;
+import java.util.*;
+import javax.swing.table.*;
+import javax.swing.event.*;
+
+public class ScrollUpdateTable extends JApplet {
+  // JDBC Connection
+  Connection connection;
+
+  // JDBC Statement
+  Statement statement;
+
+  // Result set for the table
+  ResultSet resultSet;
+
+  // Table model
+  DefaultTableModel tableModel = new DefaultTableModel();
+
+  // Table selection model
+  DefaultListSelectionModel listSelectionModel =
+    new DefaultListSelectionModel();
+
+  // New row vector
+  Vector rowVectors = new Vector();
+
+  // columnHeaderVector to hold column names
+  Vector columnHeaderVector = new Vector();
+
+  // Column count
+  int columnCount;
+
+  boolean isStandalone = false;
+  JButton jbtUpdate = new JButton();
+  JButton jbtFirst = new JButton();
+  JButton jbtLast = new JButton();
+  JButton jbtPrior = new JButton();
+  JPanel jPanel1 = new JPanel();
+  JButton jbtNext = new JButton();
+  JButton jbtDelete = new JButton();
+  JButton jbtInsert = new JButton();
+  JScrollPane jScrollPane1 = new JScrollPane();
+  JTable jTable1 = new JTable();
+  JComboBox jcboURL = new JComboBox();
+  JComboBox jcboDriver = new JComboBox();
+  JTextField jtfTableName = new JTextField();
+  JButton jtbConnect = new JButton();
+  JPanel jPanel4 = new JPanel();
+  JPanel jPanel3 = new JPanel();
+  JPanel jPanel2 = new JPanel();
+  JTextField jtfUserName = new JTextField();
+  GridLayout gridLayout4 = new GridLayout();
+  GridLayout gridLayout3 = new GridLayout();
+  JTextField jtfPassword = new JPasswordField();
+  BorderLayout borderLayout3 = new BorderLayout();
+  JLabel jLabel7 = new JLabel();
+  JLabel jLabel6 = new JLabel();
+  JLabel jLabel5 = new JLabel();
+  JLabel jLabel4 = new JLabel();
+  JLabel jLabel3 = new JLabel();
+  JLabel jlblStatus = new JLabel();
+  JSplitPane jSplitPane1 = new JSplitPane();
+  InsertNewRecord insertNewRecord1 = new InsertNewRecord();
+
+  /**Initialize the applet*/
+  public void init() {
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**Component initialization*/
+  private void jbInit() throws Exception {
+    jPanel1.setBorder(BorderFactory.createEtchedBorder());
+    jbtPrior.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtPrior_actionPerformed(e);
+      }
+    });
+    jbtPrior.setText("Prior");
+    jbtLast.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtLast_actionPerformed(e);
+      }
+    });
+    jbtLast.setText("Last");
+    jbtFirst.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtFirst_actionPerformed(e);
+      }
+    });
+    jbtFirst.setText("First");
+    jbtUpdate.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtUpdate_actionPerformed(e);
+      }
+    });
+    jbtUpdate.setText("Update");
+    this.setSize(new Dimension(532, 224));
+    jbtNext.setText("Next");
+    jbtNext.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtNext_actionPerformed(e);
+      }
+    });
+    jbtDelete.setText("Delete");
+    jbtDelete.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtDelete_actionPerformed(e);
+      }
+    });
+    jbtInsert.setText("Insert");
+    jbtInsert.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtInsert_actionPerformed(e);
+      }
+    });
+    jcboURL.setEditable(true);
+    jcboDriver.setEditable(true);
+    jtbConnect.setText("Connect to DB & Get Table");
+    jtbConnect.addActionListener(new java.awt.event.ActionListener()
+    {
+      public void actionPerformed(ActionEvent e) {
+        jtbConnect_actionPerformed(e);
+      }
+    });
+    jPanel4.setLayout(gridLayout3);
+    jPanel3.setLayout(gridLayout4);
+    jPanel2.setLayout(borderLayout3);
+    gridLayout4.setRows(5);
+    gridLayout3.setRows(5);
+    jLabel7.setText("Table Name");
+    jLabel6.setText("Password");
+    jLabel5.setText("User Name");
+    jLabel4.setText("Database URL");
+    jLabel3.setText("JDBC Driver");
+    jlblStatus.setText("Status label");
+    jSplitPane1.setContinuousLayout(true);
+    jSplitPane1.setOneTouchExpandable(true);
+    jTable1.setModel(tableModel);
+    jTable1.setSelectionModel(listSelectionModel);
+    listSelectionModel.addListSelectionListener(
+      new javax.swing.event.ListSelectionListener() {
+      public void valueChanged(ListSelectionEvent e) {
+        listSelectionModel_valueChanged(e);
+      }
+    });
+    jPanel4.setMinimumSize(new Dimension(50, 130));
+    jPanel4.setPreferredSize(new Dimension(50, 130));
+    this.getContentPane().add(jPanel1, BorderLayout.NORTH);
+    jPanel1.add(jbtFirst, null);
+    jPanel1.add(jbtNext, null);
+    jPanel1.add(jbtPrior, null);
+    jPanel1.add(jbtLast, null);
+    jPanel1.add(jbtInsert, null);
+    jPanel1.add(jbtDelete, null);
+    jPanel1.add(jbtUpdate, null);
+    this.getContentPane().add(jlblStatus, BorderLayout.SOUTH);
+    this.getContentPane().add(jSplitPane1, BorderLayout.CENTER);
+    jSplitPane1.add(jPanel2, JSplitPane.LEFT);
+    jPanel2.add(jPanel3, BorderLayout.WEST);
+    jPanel3.add(jLabel3, null);
+    jPanel3.add(jLabel4, null);
+    jPanel3.add(jLabel5, null);
+    jPanel3.add(jLabel6, null);
+    jPanel3.add(jLabel7, null);
+    jPanel2.add(jPanel4, BorderLayout.CENTER);
+    jPanel4.add(jcboDriver, null);
+    jPanel4.add(jcboURL, null);
+    jPanel4.add(jtfUserName, null);
+    jPanel4.add(jtfPassword, null);
+    jPanel4.add(jtfTableName, null);
+    jPanel2.add(jtbConnect, BorderLayout.SOUTH);
+    jSplitPane1.add(jScrollPane1, JSplitPane.RIGHT);
+    jScrollPane1.getViewport().add(jTable1, null);
+
+    // Add items to the combo boxes
+    jcboURL.addItem("jdbc:odbc:LiangBookDB_MDB");
+    jcboURL.addItem(
+      "jdbc:oracle:thin:@liang.armstrong.edu:1521:test");
+    jcboURL.addItem
+      ("jdbc:borland:dslocal:C:\\radjb4\\LiangBookDB.jds");
+    jcboURL.addItem
+      ("jdbc:interbase://localhost/C:/radjb4/LiangBookDB.gdb");
+    jcboDriver.addItem("sun.jdbc.odbc.JdbcOdbcDriver");
+    jcboDriver.addItem("oracle.jdbc.driver.OracleDriver");
+    jcboDriver.addItem(
+      "com.borland.datastore.jdbc.DataStoreDriver");
+    jcboDriver.addItem("interbase.interclient.Driver");
+
+    // Pass this (applet) to the dialog box
+    insertNewRecord1.setParent(this);
+  }
+
+  /**Main method*/
+  public static void main(String[] args)
+  {
+    ScrollUpdateTable applet = new ScrollUpdateTable();
+    applet.isStandalone = true;
+    JFrame frame = new JFrame();
+    //EXIT_ON_CLOSE == 3
+    frame.setDefaultCloseOperation(3);
+    frame.setTitle("Scrollable and Updateable Result Set Demo");
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(600, 320);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / 2, (d.height - frame.getSize().height) / 2);
+    frame.setVisible(true);
+  }
+
+  /**Handle the Update button*/
+  void jbtUpdate_actionPerformed(ActionEvent e) {
+    try {
+      // Get the current row
+      int row = jTable1.getSelectedRow();
+
+      // Gather data from the UI and update the database fields
+      for (int i=1; i<=resultSet.getMetaData().getColumnCount();
+        i++) {
+        resultSet.updateObject(i, tableModel.getValueAt(row, i-1));
+      }
+
+      // Inovke the update method in the result set
+      resultSet.updateRow();
+    }
+    catch (Exception ex) {
+      jlblStatus.setText(ex.toString());
+    }
+  }
+
+  /**Handle the First button*/
+  void jbtFirst_actionPerformed(ActionEvent e) {
+    try {
+      resultSet.first();
+      showRecord();
+    }
+    catch (Exception ex) {
+      jlblStatus.setText(ex.toString());
+    }
+  }
+
+  /**Select the row in the table and set the row number in the status*/
+  void showRecord() throws Exception
+  {
+    int row = resultSet.getRow();
+    listSelectionModel.setSelectionInterval(row-1, row-1);
+    jlblStatus.setText("Current row number: " + row);
+  }
+
+  /**Handle the Last button*/
+  void jbtLast_actionPerformed(ActionEvent e)
+  {
+    try
+    {
+      resultSet.last();
+      showRecord();
+    }
+    catch (Exception ex)
+    {
+      jlblStatus.setText(ex.toString());
+    }
+  }
+
+  /**Handle the Prior button*/
+  void jbtPrior_actionPerformed(ActionEvent e) {
+    try {
+      resultSet.previous();
+      showRecord();
+    }
+    catch (Exception ex) {
+      jlblStatus.setText(ex.toString());
+    }
+  }
+
+  /**Handle the Next button*/
+  void jbtNext_actionPerformed(ActionEvent e) {
+    try {
+      resultSet.next();
+      showRecord();
+    }
+    catch (Exception ex) {
+      jlblStatus.setText(ex.toString());
+    }
+  }
+
+  /**Handle the Delete button*/
+  void jbtDelete_actionPerformed(ActionEvent e) {
+    try {
+      // Delete the record from the database
+      resultSet.deleteRow();
+      refreshResultSet();
+
+      // Remove the row in the table
+      rowVectors.removeElementAt(
+        listSelectionModel.getLeadSelectionIndex());
+
+      jTable1.repaint();
+    }
+    catch (Exception ex) {
+      jlblStatus.setText(ex.toString());
+    }
+  }
+
+  /**Refresh the result set*/
+  void refreshResultSet() throws SQLException {
+    resultSet = statement.executeQuery(
+      "SELECT * FROM " + jtfTableName.getText().trim());
+  }
+
+  /** Handle the Insert button*/
+  void jbtInsert_actionPerformed(ActionEvent e) {
+    // Display the dialog box
+    insertNewRecord1.displayTable();
+    Vector newRecord = insertNewRecord1.getNewRecord();
+
+    // Insert the record to the UI table
+    tableModel.addRow(newRecord);
+    jTable1.validate();
+
+    // Insert the record to the database table
+    try {
+      for (int i=1; i<=columnCount; i++) {
+        resultSet.updateObject(i, newRecord.elementAt(i-1));
+      }
+
+      resultSet.insertRow();
+      refreshResultSet();
+    }
+    catch (Exception ex) {
+      jlblStatus.setText(ex.toString());
+    }
+  }
+
+  /**Handle the "Connect to DB and Get Table" button*/
+  void jtbConnect_actionPerformed(ActionEvent e) {
+    try {
+      connect(); // Connect to the database
+      getTable(); // Get the result set
+    }
+    catch (Exception ex) {
+      jlblStatus.setText(ex.toString());
+    }
+  }
+
+  /**Connect to a database*/
+  void connect() throws Exception {
+    // Load the JDBC driver
+    System.out.println((String)jcboDriver.getSelectedItem());
+    Class.forName(((String)jcboDriver.getSelectedItem()).trim());
+    System.out.println("Driver loaded");
+
+    // Establish a connection
+    connection = DriverManager.getConnection
+      (((String)jcboURL.getSelectedItem()).trim(), jtfUserName.getText().trim(),
+       jtfPassword.getText().trim());
+    System.out.println("Database connected");
+  }
+
+  /**Retrieve table*/
+  private void getTable() throws Exception
+  {
+    // Get a new statement for the current connection
+    statement = connection.createStatement
+      (ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+    // Execute a SELECT SQL command
+    resultSet = statement.executeQuery(
+      "SELECT * FROM " + jtfTableName.getText().trim());
+
+    // Find the number of columns
+    ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+    columnCount = resultSetMetaData.getColumnCount();
+
+    // Clear the vectors to display a new table
+    columnHeaderVector.clear();
+    rowVectors.clear();
+
+    // Send column names to columnHeaderVector
+    for (int i=1; i<=columnCount; i++) {
+      columnHeaderVector.addElement(
+        resultSetMetaData.getColumnName(i));
+    }
+
+    // Send table data to rowVectors
+    while (resultSet.next()) {
+      // Define a single vector
+      Vector singleRow = new Vector();
+
+      for (int i=1; i<=columnCount; i++) {
+        singleRow.addElement(resultSet.getString(i));
+      }
+
+      rowVectors.addElement(singleRow);
+    }
+
+    // Set table data
+    tableModel.setDataVector(rowVectors, columnHeaderVector);
+
+    // Select the first row
+    listSelectionModel.setSelectionInterval(0, 0);
+    resultSet.absolute(1);
+  }
+
+  /**Handle the selection in the table*/
+  void listSelectionModel_valueChanged(ListSelectionEvent e) {
+    int selectedRow = jTable1.getSelectedRow();
+
+    try {
+      resultSet.absolute(selectedRow+1);
+      showRecord();
+    }
+    catch (Exception ex) {
+      jlblStatus.setText(ex.toString());
+    }
+  }
+}

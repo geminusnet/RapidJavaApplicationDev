@@ -1,0 +1,20 @@
+/*
+ * MyListModel.java
+ *
+ * Created on September 9, 2001, 9:42 AM
+ */
+
+package listdemo;
+
+/**
+ *
+ * @author  administrator
+ * @version 
+ */
+public class MyListModel {
+
+  /** Creates new MyListModel */
+    public MyListModel() {
+    }
+
+}

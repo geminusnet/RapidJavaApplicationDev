@@ -1,0 +1,11 @@
+[PropertyInfo]
+image,Image,false,false, , ,true,<default>
+imageFilename,String,false,false, , ,true,<default>
+stretched,boolean,false,false, , ,true,<default>
+xCoordinate,int,false,false,xCoordinate,xCoordinate,true,<default>
+yCoordinate,int,false,false,yCoordinate,yCoordinate,true,<default>
+[IconNames]
+
+
+
+

@@ -1,0 +1,15 @@
+package introdemo;
+
+public class Welcome {
+    
+    /** Creates a new instance of Welcome */
+    public Welcome() {
+    }
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+    }
+    
+}

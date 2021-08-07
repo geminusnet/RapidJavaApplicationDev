@@ -1,0 +1,106 @@
+package treedemo;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+import javax.swing.*;
+import javax.swing.tree.*;
+
+public class TestTree extends JApplet {
+
+  boolean isStandalone = false;
+  JScrollPane jScrollPane1 = new JScrollPane();
+  JTree jTree1 = new JTree();
+  DefaultTreeModel treeModel;
+
+  /**Initialize the applet*/
+  public void init() {
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**Component initialization*/
+  private void jbInit() throws Exception {
+    // Create a tree model and set the tree model in jTree1
+    treeModel = createTreeModel();
+    jTree1.setModel(treeModel); // Set this value manually
+
+    this.setSize(new Dimension(400,300));
+    this.getContentPane().add(jScrollPane1, BorderLayout.CENTER);
+    jScrollPane1.getViewport().add(jTree1, null);
+  }
+
+  /**Create a tree model*/
+  private DefaultTreeModel createTreeModel() {
+    DefaultMutableTreeNode root = new DefaultMutableTreeNode
+      ("Rapid Java Application Development Using JBuilder 4 and 5");
+
+    DefaultMutableTreeNode parent = new DefaultMutableTreeNode
+      ("Part I: Introduction to JBuilder and JavaBeans");
+    root.add(parent);
+
+    parent.add(new DefaultMutableTreeNode
+      ("Chapter 1: Introduction to JBuilder"));
+    parent.add(new DefaultMutableTreeNode
+      ("Chapter 2: Introudction to JavaBeans"));
+    parent.add(new DefaultMutableTreeNode
+      ("Chapter 3: Beans Events"));
+    parent.add(new DefaultMutableTreeNode
+      ("Chapter 4: Developing and Using Components"));
+
+    parent = new DefaultMutableTreeNode("Part II: Rapid Application "
+      + "Development Using Swing Components");
+    root.add(parent);
+
+    parent.add(new DefaultMutableTreeNode
+      ("Chapter 5: Swing Components"));
+    parent.add(new DefaultMutableTreeNode
+      ("Chapter 6: Containers and Layout Managers"));
+    parent.add(new DefaultMutableTreeNode
+      ("Chapter 7: Menus, Toolbars, and Dialogs"));
+    parent.add(new DefaultMutableTreeNode
+      ("Chapter 8: Advanced Swing Components"));
+
+    // Omitted for brevity
+    return new DefaultTreeModel(root);
+  }
+
+  /**Get Applet information*/
+  public String getAppletInfo() {
+    return "Applet Information";
+  }
+  /**Get parameter info*/
+  public String[][] getParameterInfo() {
+    return null;
+  }
+  /**Main method*/
+  public static void main(String[] args) {
+    TestTree applet = new TestTree();
+    applet.isStandalone = true;
+    JFrame frame = new JFrame();
+    //EXIT_ON_CLOSE == 3
+    frame.setDefaultCloseOperation(3);
+    frame.setTitle("TestTree");
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(400,320);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / 2, (d.height - frame.getSize().height) / 2);
+    frame.setVisible(true);
+  }
+
+  //static initializer for setting look & feel
+  static {
+    try {
+      //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      //UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+    }
+    catch(Exception e) {
+    }
+  }
+}

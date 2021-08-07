@@ -1,0 +1,14 @@
+jbuilder.debug.NoTracingClasses.1[0]=,java.*,1
+jbuilder.debug.NoTracingClasses.10[0]=,com.borland.dx,1
+jbuilder.debug.NoTracingClasses.11[0]=,com.borland.jbuilder.runtime,1
+jbuilder.debug.NoTracingClasses.12[0]=,com.inprise.vbroker,1
+jbuilder.debug.NoTracingClasses.13[0]=,com.visigenic,1
+jbuilder.debug.NoTracingClasses.14[0]=,org.omg,1
+jbuilder.debug.NoTracingClasses.2[0]=,javax.*,1
+jbuilder.debug.NoTracingClasses.3[0]=,sun.*,1
+jbuilder.debug.NoTracingClasses.4[0]=,com.sun.*,1
+jbuilder.debug.NoTracingClasses.5[0]=,com.borland.jbcl,1
+jbuilder.debug.NoTracingClasses.6[0]=,com.borland.jb,1
+jbuilder.debug.NoTracingClasses.7[0]=,com.borland.sql,1
+jbuilder.debug.NoTracingClasses.8[0]=,com.borland.dbswing,1
+jbuilder.debug.NoTracingClasses.9[0]=,com.borland.datastore,1

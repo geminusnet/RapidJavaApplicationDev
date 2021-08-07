@@ -1,0 +1,80 @@
+package dialogdemo;
+
+/**
+ * Title:
+ * Description:
+ * Copyright:    Copyright (c) 2001
+ * Company:
+ * @author
+ * @version 1.0
+ */
+
+import javax.swing.*;
+
+public class Figure7_25 {
+
+  public Figure7_25() {
+    Object[] states = {
+"Alabama",
+"Alaska",
+"Arizona",
+"Arkansas",
+"California",
+"Colorado",
+"Connecticut",
+"Delaware",
+"Florida",
+"Georgia",
+"Hawaii",
+"Idaho",
+"Illinois",
+"Indiana",
+"Iowa",
+"Kansas",
+"Kentucky",
+"Louisiana",
+"Maine",
+"Maryland",
+"Massachusetts",
+"Michigan",
+"Minnesota",
+"Mississippi",
+"Missouri",
+"Montana",
+"Nebraska",
+"Nevada",
+"New Hampshire",
+"New Jersey",
+"New Mexico",
+"New York",
+"North Carolina",
+"North Dakota",
+"Ohio",
+"Oklahoma",
+"Oregon",
+"Pennsylvania",
+"Rhode Island",
+"South Carolina",
+"South Dakota",
+"Tennessee",
+"Texas",
+"Utah",
+"Vermont",
+"Virginia",
+"Washington",
+"Washington,D.C.",
+"West Virginia",
+"Wisconsin",
+"Wyoming"
+};
+
+    JOptionPane.showInputDialog(null, "Select a State", "Choose a State",
+      JOptionPane.INFORMATION_MESSAGE, null,
+      states,
+      "Georgia");
+  }
+
+  public static void main(String[] args) {
+    new Figure7_25();
+  }
+}

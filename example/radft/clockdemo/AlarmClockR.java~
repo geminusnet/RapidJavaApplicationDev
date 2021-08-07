@@ -1,0 +1,96 @@
+package clockdemo;
+
+import java.awt.*;
+import java.util.*;
+import java.awt.event.*;
+
+public class ClockWithAlarm extends Clock {
+  private java.lang.String alarmDate;
+  private java.lang.String alarmTime;
+  private transient Vector actionListeners;
+
+  public ClockWithAlarm() {
+    super();
+
+    // Get initial date and time
+    GregorianCalendar cal = new GregorianCalendar(tz);
+
+    // Initialize alarm date, which consists of current
+    // year, month, and date, separated by commas.
+    alarmDate = cal.get(cal.YEAR) + "," + cal.get(cal.MONTH)
+      + "," + cal.get(cal.DATE);
+
+    // Initialize alarm time, which consists of current
+    // hour, minute, and second, separated by commas.
+    alarmTime = cal.get(cal.HOUR) + "," + cal.get(cal.MINUTE)
+      + "," + cal.get(cal.SECOND);
+  }
+
+  public void run() {
+    while (true) {
+      try {
+        thread.sleep(1000);
+      }
+      catch (InterruptedException e) {}
+      repaint();
+
+      // Fire tick event if the current time matches alarm time
+      GregorianCalendar rightNow = new GregorianCalendar(tz);
+      String rightNowDate = rightNow.get(rightNow.YEAR)
+        + "," +  rightNow.get(rightNow.MONTH) + "," +
+        rightNow.get(rightNow.DATE);
+      String rightNowTime = rightNow.get(rightNow.HOUR)
+        + "," +  rightNow.get(rightNow.MINUTE) + "," +
+        rightNow.get(rightNow.SECOND);
+      if (rightNowDate.equals(alarmDate)
+        && rightNowTime.equals(alarmTime))
+        fireActionPerformed(new ActionEvent
+          (this, ActionEvent.ACTION_PERFORMED, null));
+    }
+  }
+
+  public void setAlarmDate(java.lang.String newAlarmDate) {
+    alarmDate = newAlarmDate;
+  }
+
+  public java.lang.String getAlarmDate() {
+    return alarmDate;
+  }
+
+  public void setAlarmTime(java.lang.String newAlarmTime) {
+    alarmTime = newAlarmTime;
+  }
+
+  public java.lang.String getAlarmTime() {
+    return alarmTime;
+  }
+
+  /** Remove a listener */
+  public synchronized void removeActionListener(ActionListener l) {
+    if (actionListeners != null && actionListeners.contains(l)) {
+      Vector v = (Vector) actionListeners.clone();
+      v.removeElement(l);
+      actionListeners = v;
+    }
+  }
+
+  /** Add a listener */
+  public synchronized void addActionListener(ActionListener l) {
+    Vector v = actionListeners ==
+      null ? new Vector(2) : (Vector) actionListeners.clone();
+    if (!v.contains(l)) {
+      v.addElement(l);
+      actionListeners = v;
+    }
+  }
+
+  /** Fire ActionEvent */
+  protected void fireActionPerformed(ActionEvent e) {
+    if (actionListeners != null) {
+      Vector listeners = actionListeners;
+      int count = listeners.size();
+      for (int i = 0; i < count; i++)
+        ((ActionListener) listeners.elementAt(i)).actionPerformed(e);
+    }
+  }
+}

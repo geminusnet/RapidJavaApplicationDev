@@ -1,0 +1,202 @@
+package exercise12_4;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import java.sql.*;
+import exercise13_6.DBConnectDialog;
+
+public class Exercise12_4 extends JApplet {
+  // Connection to the database
+  Connection connection;
+
+  // Statement to execute SQL commands
+  Statement statement;
+
+  boolean isStandalone = false;
+  JPanel jPanel1 = new JPanel();
+  JPanel jPanel2 = new JPanel();
+  BorderLayout borderLayout1 = new BorderLayout();
+  JScrollPane jScrollPane1 = new JScrollPane();
+  JTextArea jtasqlCommand = new JTextArea();
+  JLabel jlblStatus = new JLabel();
+  BorderLayout borderLayout2 = new BorderLayout();
+  TitledBorder titledBorder1;
+  JScrollPane jScrollPane2 = new JScrollPane();
+  JTextArea jtaSQLResult = new JTextArea();
+  DBConnectDialog dBConnectDialog1 = new DBConnectDialog();
+  JPanel jPanel3 = new JPanel();
+  JButton jbtExecuteSQL = new JButton();
+  TitledBorder titledBorder2;
+  JLabel jlblExecutionStatus = new JLabel();
+  BorderLayout borderLayout3 = new BorderLayout();
+  JMenuBar jMenuBar1 = new JMenuBar();
+  JMenu jMenu1 = new JMenu();
+  JMenuItem jMenuItem1 = new JMenuItem();
+
+  /**Initialize the applet*/
+  public void init() {
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**Component initialization*/
+  private void jbInit() throws Exception {
+    titledBorder1 = new TitledBorder("");
+    titledBorder2 = new TitledBorder("");
+    this.setSize(new Dimension(400,300));
+    jPanel1.setLayout(borderLayout1);
+    jtasqlCommand.setPreferredSize(new Dimension(57, 50));
+    jlblStatus.setText("No connection now");
+    jPanel2.setLayout(borderLayout2);
+    jScrollPane1.setVerticalScrollBarPolicy(
+      JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    jScrollPane1.setBorder(titledBorder1);
+    titledBorder1.setTitle("Enter a SQL Command");
+    jbtExecuteSQL.setText("Execute SQL Command");
+    jbtExecuteSQL.addActionListener(
+      new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jbtExecuteSQL_actionPerformed(e);
+      }
+    });
+    jPanel3.setLayout(borderLayout3);
+    jScrollPane2.setBorder(titledBorder2);
+    titledBorder2.setTitle("SQL Execution Result");
+    jlblExecutionStatus.setText("Execution status to be displayed");
+    jMenu1.setText("File");
+    jMenuItem1.setText("Connect");
+    jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        jMenuItem1_actionPerformed(e);
+      }
+    });
+    this.getContentPane().add(jPanel1, BorderLayout.NORTH);
+    jPanel1.add(jPanel2, BorderLayout.NORTH);
+    jPanel1.add(jScrollPane1, BorderLayout.CENTER);
+    jPanel1.add(jPanel3, BorderLayout.SOUTH);
+    jPanel3.add(jlblExecutionStatus, BorderLayout.CENTER);
+    jPanel3.add(jbtExecuteSQL, BorderLayout.EAST);
+    this.getContentPane().add(jScrollPane2, BorderLayout.CENTER);
+    this.getContentPane().add(jlblStatus, BorderLayout.SOUTH);
+    jScrollPane2.getViewport().add(jtaSQLResult, null);
+    jScrollPane1.getViewport().add(jtasqlCommand, null);
+    jMenuBar1.add(jMenu1);
+    jMenu1.add(jMenuItem1);
+    this.setJMenuBar(jMenuBar1);
+  }
+
+  /**Execute SQL commands*/
+  void jbtExecuteSQL_actionPerformed(ActionEvent e) {
+    if (connection == null) {
+      jtaSQLResult.setText("Please connect to a database first");
+      return;
+    }
+    else {
+      String sqlCommand = jtasqlCommand.getText().trim();
+      if (sqlCommand.toUpperCase().startsWith("SELECT")) {
+        processSQLSelect(sqlCommand);
+      }
+      else {
+        processSQLNonSelect(sqlCommand);
+      }
+    }
+  }
+
+  /**Execute SQL SELECT commands*/
+  private void processSQLSelect(String sqlCommand) {
+    try {
+      // Get a new statement for the current connection
+      statement = connection.createStatement();
+
+      // Execute a SELECT SQL command
+      ResultSet resultSet = statement.executeQuery(sqlCommand);
+
+      // Find the number of columns in the result set
+      int columnCount = resultSet.getMetaData().getColumnCount();
+      String row = "";
+
+      while (resultSet.next()) {
+        for (int i=1; i<=columnCount; i++) {
+          row += resultSet.getString(i) + " ";
+        }
+
+        jtaSQLResult.append(row + '\n');
+
+        // Reset row to empty
+        row = "";
+      }
+    }
+    catch (SQLException ex) {
+      jlblExecutionStatus.setText(ex.toString());
+    }
+  }
+
+  /**Execute SQL DDL, and modification commands*/
+  private void processSQLNonSelect(String sqlCommand) {
+    try {
+      // Get a new statement for the current connection
+      statement = connection.createStatement();
+
+      // Execute a non-SELECT SQL command
+      statement.executeUpdate(sqlCommand);
+
+      jlblExecutionStatus.setText("SQL command executed");
+    }
+    catch (SQLException ex) {
+      jlblExecutionStatus.setText(ex.toString());
+    }
+  }
+
+  /**Get Applet information*/
+  public String getAppletInfo() {
+    return "Applet Information";
+  }
+  /**Get parameter info*/
+  public String[][] getParameterInfo() {
+    return null;
+  }
+
+  /**Main method*/
+  public static void main(String[] args) {
+    Exercise12_4 applet = new Exercise12_4();
+    applet.isStandalone = true;
+    JFrame frame = new JFrame();
+    //EXIT_ON_CLOSE == 3
+    frame.setDefaultCloseOperation(3);
+    frame.setTitle("Exercise12_4");
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(400,320);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / 2,
+      (d.height - frame.getSize().height) / 2);
+    frame.setVisible(true);
+  }
+
+  //static initializer for setting look & feel
+  static {
+    try {
+      //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      //UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+    }
+    catch(Exception e) {
+    }
+  }
+
+  void jMenuItem1_actionPerformed(ActionEvent e) {
+    dBConnectDialog1.setVisible(true);
+    connection = dBConnectDialog1.getConnection();
+    if (connection != null) {
+      jlblStatus.setText("Connected to " + connection);
+    }
+
+  }
+}

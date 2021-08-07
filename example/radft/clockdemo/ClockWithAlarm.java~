@@ -1,0 +1,101 @@
+package clockdemo;
+
+import java.awt.*;
+import java.util.*;
+import java.awt.event.*;
+
+public class ClockWithAlarm extends Clock {
+  private java.lang.String alarmDate;
+  private java.lang.String alarmTime;
+
+  /** Utility field used by event firing mechanism. */
+  private javax.swing.event.EventListenerList listenerList =  null;
+  
+  public ClockWithAlarm() {
+    super();
+
+    // Get initial date and time
+    GregorianCalendar cal = new GregorianCalendar(tz);
+
+    // Initialize alarm date, which consists of current
+    // year, month, and date, separated by commas.
+    alarmDate = cal.get(cal.YEAR) + "," + cal.get(cal.MONTH)
+      + "," + cal.get(cal.DATE);
+
+    // Initialize alarm time, which consists of current
+    // hour, minute, and second, separated by commas.
+    alarmTime = cal.get(cal.HOUR) + "," + cal.get(cal.MINUTE)
+      + "," + cal.get(cal.SECOND);
+  }
+
+  public void run() {
+    while (true) {
+      try {
+        thread.sleep(1000);
+      }
+      catch (InterruptedException e) {}
+      repaint();
+
+      // Fire tick event if the current time matches alarm time
+      GregorianCalendar rightNow = new GregorianCalendar(tz);
+      String rightNowDate = rightNow.get(rightNow.YEAR)
+        + "," +  rightNow.get(rightNow.MONTH) + "," +
+        rightNow.get(rightNow.DATE);
+      String rightNowTime = rightNow.get(rightNow.HOUR)
+        + "," +  rightNow.get(rightNow.MINUTE) + "," +
+        rightNow.get(rightNow.SECOND);
+      if (rightNowDate.equals(alarmDate)
+        && rightNowTime.equals(alarmTime))
+        fireActionListenerActionPerformed(new ActionEvent
+          (this, ActionEvent.ACTION_PERFORMED, null));
+    }
+  }
+
+  public void setAlarmDate(java.lang.String newAlarmDate) {
+    alarmDate = newAlarmDate;
+  }
+
+  public java.lang.String getAlarmDate() {
+    return alarmDate;
+  }
+
+  public void setAlarmTime(java.lang.String newAlarmTime) {
+    alarmTime = newAlarmTime;
+  }
+
+  public java.lang.String getAlarmTime() {
+    return alarmTime;
+  }
+  
+  /** Registers ActionListener to receive events.
+   * @param listener The listener to register.
+   */
+  public synchronized void addActionListener(java.awt.event.ActionListener listener) {
+    if (listenerList == null ) {
+      listenerList = new javax.swing.event.EventListenerList();
+    }
+    listenerList.add(java.awt.event.ActionListener.class, listener);
+  }
+  
+  /** Removes ActionListener from the list of listeners.
+   * @param listener The listener to remove.
+   */
+  public synchronized void removeActionListener(java.awt.event.ActionListener listener) {
+    listenerList.remove(java.awt.event.ActionListener.class, listener);
+  }
+  
+  /** Notifies all registered listeners about the event.
+   *
+   * @param e The event to be fired
+   */
+  private void fireActionListenerActionPerformed(java.awt.event.ActionEvent event) {
+    if (listenerList == null) return;
+    Object[] listeners = listenerList.getListenerList();
+    for (int i = listeners.length-2; i>=0; i-=2) {
+      if (listeners[i]==java.awt.event.ActionListener.class) {
+        ((java.awt.event.ActionListener)listeners[i+1]).actionPerformed(event);
+      }
+    }
+  }
+  
+}
